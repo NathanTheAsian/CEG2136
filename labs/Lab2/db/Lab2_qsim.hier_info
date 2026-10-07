@@ -1,0 +1,17 @@
+|MOD
+Q1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+count => inst9.IN0
+count => inst2~1.IN0
+count => inst2~0.IN1
+count => inst8.IN0
+count => inst4.IN0
+count => inst3.IN0
+count => inst10.IN2
+MODCLK => inst2.CLK
+MODCLK => inst.CLK
+MODCLK => inst1.CLK
+Q2 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+Q0 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+RO <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,4 +1,34 @@
-|BCD
+|Lab2
+C60 <= MOD:inst1.RO
+CLK => MOD:inst1.MODCLK
+CLK => BCD:inst.BCDCLK
+BQ3 <= BCD:inst.Q3
+BQ2 <= BCD:inst.Q2
+BQ1 <= BCD:inst.Q1
+BQ0 <= BCD:inst.Q0
+Q1 <= MOD:inst1.Q1
+Q0 <= MOD:inst1.Q0
+Q2 <= MOD:inst1.Q2
+
+
+|Lab2|MOD:inst1
+Q1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+count => inst9.IN0
+count => inst2.IN0
+count => inst2.IN1
+count => inst8.IN0
+count => inst4.IN0
+count => inst3.IN0
+count => inst10.IN2
+MODCLK => inst2.CLK
+MODCLK => inst.CLK
+MODCLK => inst1.CLK
+Q2 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+Q0 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+RO <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Lab2|BCD:inst
 BRO <= inst1.DB_MAX_OUTPUT_PORT_TYPE
 BCDCLK => inst4.CLK
 BCDCLK => inst3.CLK
