@@ -1,0 +1,83 @@
+|FourBitAdder
+OV <= inst28.DB_MAX_OUTPUT_PORT_TYPE
+M => inst19.IN0
+M => inst8.IN1
+M => inst7.IN1
+M => inst6.IN1
+M => inst5.IN1
+M => FAddr:inst.C_in
+M => inst26.IN0
+M => inst27.IN0
+A3 => inst20.IN0
+A3 => FAddr:inst3.A
+A3 => inst26.IN1
+A3 => inst25.IN1
+B3 => inst21.IN0
+B3 => inst8.IN0
+B3 => inst27.IN2
+B3 => inst25.IN2
+A2 => FAddr:inst2.A
+B2 => inst7.IN0
+A1 => FAddr:inst1.A
+B1 => inst6.IN0
+A0 => FAddr:inst.A
+B0 => inst5.IN0
+SA3 <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+SA2 <= FAddr:inst2.Sum
+SA1 <= FAddr:inst1.Sum
+SA0 <= FAddr:inst.Sum
+C4 <= FAddr:inst3.C_out
+
+
+|FourBitAdder|FAddr:inst3
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FourBitAdder|FAddr:inst2
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FourBitAdder|FAddr:inst1
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|FourBitAdder|FAddr:inst
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+

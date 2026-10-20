@@ -1,0 +1,7 @@
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE AUTO
+set_global_assignment -name TOP_LEVEL_ENTITY FourBitAdder
+set_global_assignment -name BDF_FILE FAddr.bdf
+set_global_assignment -name BDF_FILE FourBitAdder.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Input.vwf
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL

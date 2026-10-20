@@ -1,0 +1,13 @@
+|FAddr
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+

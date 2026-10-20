@@ -1,0 +1,16 @@
+|state4bit
+N <= F3.DB_MAX_OUTPUT_PORT_TYPE
+F3 => N.DATAIN
+F3 => result_or.IN0
+Z <= zero_not.DB_MAX_OUTPUT_PORT_TYPE
+F1 => result_or.IN1
+F0 => result_or.IN2
+F2 => result_or.IN3
+V <= overflow_gate.DB_MAX_OUTPUT_PORT_TYPE
+S3 => arithmetic_mode.IN0
+CAR2 => carry_difference.IN0
+CAR3 => carry_difference.IN1
+CAR3 => carry_gate.IN1
+Cy <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+

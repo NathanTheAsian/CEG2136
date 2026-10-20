@@ -1,0 +1,39 @@
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Functional Simulation Netlist Generation
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Copyright (C) 1991-2013 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, Altera MegaCore Function License 
+    Info: Agreement, or other applicable license agreement, including, 
+    Info: without limitation, that your use is for the sole purpose of 
+    Info: programming logic devices manufactured by Altera and sold by 
+    Info: Altera or its authorized distributors.  Please refer to the 
+    Info: applicable agreement for further details.
+    Info: Processing started: Mon Oct 19 23:16:27 2026
+Info: Command: quartus_map --generate_functional_sim_netlist Check
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file 4bitarithmeticcircuit.bdf
+    Info (12023): Found entity 1: 4bitArithmeticCircuit
+Info (12021): Found 1 design units, including 1 entities, in source file 1bitarithmeticcircuit.bdf
+    Info (12023): Found entity 1: 1bitArithmeticCircuit
+Info (12021): Found 1 design units, including 1 entities, in source file fourbitadder.bdf
+    Info (12023): Found entity 1: FourBitAdder
+Info (12021): Found 1 design units, including 1 entities, in source file faddr.bdf
+    Info (12023): Found entity 1: FAddr
+Info (12021): Found 1 design units, including 1 entities, in source file fouronemux.bdf
+    Info (12023): Found entity 1: FourOneMUX
+Info (12127): Elaborating entity "4bitArithmeticCircuit" for the top level hierarchy
+Info (12128): Elaborating entity "FourBitAdder" for hierarchy "FourBitAdder:inst8"
+Info (12128): Elaborating entity "FAddr" for hierarchy "FourBitAdder:inst8|FAddr:inst3"
+Info (12128): Elaborating entity "1bitArithmeticCircuit" for hierarchy "1bitArithmeticCircuit:inst"
+Info (12128): Elaborating entity "FourOneMUX" for hierarchy "1bitArithmeticCircuit:inst|FourOneMUX:inst"
+Info: Quartus II 64-Bit Functional Simulation Netlist Generation was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4566 megabytes
+    Info: Processing ended: Mon Oct 19 23:16:27 2026
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:00

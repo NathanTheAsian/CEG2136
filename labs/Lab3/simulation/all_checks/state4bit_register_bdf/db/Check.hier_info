@@ -1,0 +1,38 @@
+|state4bit_register
+V <= flag_V.DB_MAX_OUTPUT_PORT_TYPE
+CLRN => flag_V.ACLR
+CLRN => flag_Z.ACLR
+CLRN => flag_N.ACLR
+CLRN => flag_Cy.ACLR
+CLK => flag_V.CLK
+CLK => flag_Z.CLK
+CLK => flag_N.CLK
+CLK => flag_Cy.CLK
+F3 => state4bit:status_logic.F3
+F2 => state4bit:status_logic.F2
+F1 => state4bit:status_logic.F1
+F0 => state4bit:status_logic.F0
+S3 => state4bit:status_logic.S3
+CAR2 => state4bit:status_logic.CAR2
+CAR3 => state4bit:status_logic.CAR3
+Z <= flag_Z.DB_MAX_OUTPUT_PORT_TYPE
+N <= flag_N.DB_MAX_OUTPUT_PORT_TYPE
+Cy <= flag_Cy.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|state4bit_register|state4bit:status_logic
+N <= F3.DB_MAX_OUTPUT_PORT_TYPE
+F3 => N.DATAIN
+F3 => result_or.IN0
+Z <= zero_not.DB_MAX_OUTPUT_PORT_TYPE
+F1 => result_or.IN1
+F0 => result_or.IN2
+F2 => result_or.IN3
+V <= overflow_gate.DB_MAX_OUTPUT_PORT_TYPE
+S3 => arithmetic_mode.IN0
+CAR2 => carry_difference.IN0
+CAR3 => carry_difference.IN1
+CAR3 => carry_gate.IN1
+Cy <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
+
+

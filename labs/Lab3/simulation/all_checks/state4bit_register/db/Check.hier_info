@@ -1,0 +1,39 @@
+|state4bit_register
+CLK => V~reg0.CLK
+CLK => Z~reg0.CLK
+CLK => N~reg0.CLK
+CLK => Cy~reg0.CLK
+CLRN => V~reg0.ACLR
+CLRN => Z~reg0.ACLR
+CLRN => N~reg0.ACLR
+CLRN => Cy~reg0.ACLR
+F3 => F3~0.IN1
+F2 => F2~0.IN1
+F1 => F1~0.IN1
+F0 => F0~0.IN1
+S3 => S3~0.IN1
+CAR2 => CAR2~0.IN1
+CAR3 => CAR3~0.IN1
+V <= V~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Z <= Z~reg0.DB_MAX_OUTPUT_PORT_TYPE
+N <= N~reg0.DB_MAX_OUTPUT_PORT_TYPE
+Cy <= Cy~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|state4bit_register|state4bit:status_logic
+F3 => WideOr0.IN0
+F3 => N.DATAIN
+F2 => WideOr0.IN1
+F1 => WideOr0.IN2
+F0 => WideOr0.IN3
+S3 => V~1.IN1
+S3 => Cy~0.IN0
+CAR2 => V~0.IN0
+CAR3 => V~0.IN1
+CAR3 => Cy~0.IN1
+V <= V~1.DB_MAX_OUTPUT_PORT_TYPE
+Z <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+N <= F3.DB_MAX_OUTPUT_PORT_TYPE
+Cy <= Cy~0.DB_MAX_OUTPUT_PORT_TYPE
+
+

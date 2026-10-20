@@ -1,0 +1,463 @@
+|4bitArithmeticCircuit
+CA3 <= FourBitAdder:inst8.SA3
+S2 => 1bitArithmeticCircuit:inst.S2
+S2 => 1bitArithmeticCircuit:inst1.S2
+S2 => 1bitArithmeticCircuit:inst2.S2
+S2 => 1bitArithmeticCircuit:inst3.S2
+S1 => 1bitArithmeticCircuit:inst.S1
+S1 => 1bitArithmeticCircuit:inst1.S1
+S1 => 1bitArithmeticCircuit:inst2.S1
+S1 => 1bitArithmeticCircuit:inst3.S1
+S0 => 1bitArithmeticCircuit:inst.S0
+S0 => 1bitArithmeticCircuit:inst1.S0
+S0 => 1bitArithmeticCircuit:inst2.S0
+S0 => 1bitArithmeticCircuit:inst3.S0
+A3 => 1bitArithmeticCircuit:inst.A
+B3 => 1bitArithmeticCircuit:inst.B
+A2 => 1bitArithmeticCircuit:inst1.A
+B2 => 1bitArithmeticCircuit:inst1.B
+A1 => 1bitArithmeticCircuit:inst2.A
+B1 => 1bitArithmeticCircuit:inst2.B
+A0 => 1bitArithmeticCircuit:inst3.A
+B0 => 1bitArithmeticCircuit:inst3.B
+CA1 <= FourBitAdder:inst8.SA1
+CA0 <= FourBitAdder:inst8.SA0
+CA2 <= FourBitAdder:inst8.SA2
+OV <= FourBitAdder:inst8.OV
+
+
+|4bitArithmeticCircuit|FourBitAdder:inst8
+OV <= inst28.DB_MAX_OUTPUT_PORT_TYPE
+M => inst19.IN0
+M => inst8.IN1
+M => inst7.IN1
+M => inst6.IN1
+M => inst5.IN1
+M => FAddr:inst.C_in
+M => inst26.IN0
+M => inst27.IN0
+A3 => inst20.IN0
+A3 => FAddr:inst3.A
+A3 => inst26.IN1
+A3 => inst25.IN1
+B3 => inst21.IN0
+B3 => inst8.IN0
+B3 => inst27.IN2
+B3 => inst25.IN2
+A2 => FAddr:inst2.A
+B2 => inst7.IN0
+A1 => FAddr:inst1.A
+B1 => inst6.IN0
+A0 => FAddr:inst.A
+B0 => inst5.IN0
+SA3 <= Sum.DB_MAX_OUTPUT_PORT_TYPE
+SA2 <= FAddr:inst2.Sum
+SA1 <= FAddr:inst1.Sum
+SA0 <= FAddr:inst.Sum
+C4 <= FAddr:inst3.C_out
+
+
+|4bitArithmeticCircuit|FourBitAdder:inst8|FAddr:inst3
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|FourBitAdder:inst8|FAddr:inst2
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|FourBitAdder:inst8|FAddr:inst1
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|FourBitAdder:inst8|FAddr:inst
+Sum <= inst10.DB_MAX_OUTPUT_PORT_TYPE
+C_in => inst10.IN0
+C_in => inst6.IN0
+A => inst9.IN0
+A => inst5.IN1
+A => inst.IN0
+B => inst9.IN1
+B => inst5.IN0
+B => inst.IN1
+C_out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst
+A_out <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+S2 => inst7.IN0
+S2 => FourOneMUX:inst10.E
+S2 => FourOneMUX:inst11.E
+A => FourOneMUX:inst.D0
+A => FourOneMUX:inst.D1
+A => FourOneMUX:inst.D2
+A => FourOneMUX:inst.D3
+A => FourOneMUX:inst10.D0
+A => FourOneMUX:inst10.D1
+A => inst12.IN0
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst10.S1
+S1 => FourOneMUX:inst5.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst10.S0
+S0 => FourOneMUX:inst5.S0
+S0 => FourOneMUX:inst11.S0
+S0 => Cy_out.DATAIN
+B_out <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+B => FourOneMUX:inst5.D0
+B => FourOneMUX:inst5.D1
+B => inst13.IN0
+Cy_out <= S0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst|FourOneMUX:inst
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst|FourOneMUX:inst10
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst|FourOneMUX:inst5
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst|FourOneMUX:inst11
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst1
+A_out <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+S2 => inst7.IN0
+S2 => FourOneMUX:inst10.E
+S2 => FourOneMUX:inst11.E
+A => FourOneMUX:inst.D0
+A => FourOneMUX:inst.D1
+A => FourOneMUX:inst.D2
+A => FourOneMUX:inst.D3
+A => FourOneMUX:inst10.D0
+A => FourOneMUX:inst10.D1
+A => inst12.IN0
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst10.S1
+S1 => FourOneMUX:inst5.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst10.S0
+S0 => FourOneMUX:inst5.S0
+S0 => FourOneMUX:inst11.S0
+S0 => Cy_out.DATAIN
+B_out <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+B => FourOneMUX:inst5.D0
+B => FourOneMUX:inst5.D1
+B => inst13.IN0
+Cy_out <= S0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst1|FourOneMUX:inst
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst1|FourOneMUX:inst10
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst1|FourOneMUX:inst5
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst1|FourOneMUX:inst11
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst2
+A_out <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+S2 => inst7.IN0
+S2 => FourOneMUX:inst10.E
+S2 => FourOneMUX:inst11.E
+A => FourOneMUX:inst.D0
+A => FourOneMUX:inst.D1
+A => FourOneMUX:inst.D2
+A => FourOneMUX:inst.D3
+A => FourOneMUX:inst10.D0
+A => FourOneMUX:inst10.D1
+A => inst12.IN0
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst10.S1
+S1 => FourOneMUX:inst5.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst10.S0
+S0 => FourOneMUX:inst5.S0
+S0 => FourOneMUX:inst11.S0
+S0 => Cy_out.DATAIN
+B_out <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+B => FourOneMUX:inst5.D0
+B => FourOneMUX:inst5.D1
+B => inst13.IN0
+Cy_out <= S0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst2|FourOneMUX:inst
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst2|FourOneMUX:inst10
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst2|FourOneMUX:inst5
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst2|FourOneMUX:inst11
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst3
+A_out <= inst8.DB_MAX_OUTPUT_PORT_TYPE
+S2 => inst7.IN0
+S2 => FourOneMUX:inst10.E
+S2 => FourOneMUX:inst11.E
+A => FourOneMUX:inst.D0
+A => FourOneMUX:inst.D1
+A => FourOneMUX:inst.D2
+A => FourOneMUX:inst.D3
+A => FourOneMUX:inst10.D0
+A => FourOneMUX:inst10.D1
+A => inst12.IN0
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst10.S1
+S1 => FourOneMUX:inst5.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst10.S0
+S0 => FourOneMUX:inst5.S0
+S0 => FourOneMUX:inst11.S0
+S0 => Cy_out.DATAIN
+B_out <= inst9.DB_MAX_OUTPUT_PORT_TYPE
+B => FourOneMUX:inst5.D0
+B => FourOneMUX:inst5.D1
+B => inst13.IN0
+Cy_out <= S0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst3|FourOneMUX:inst
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst3|FourOneMUX:inst10
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst3|FourOneMUX:inst5
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+
+|4bitArithmeticCircuit|1bitArithmeticCircuit:inst3|FourOneMUX:inst11
+Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
+E => inst7.IN0
+D0 => inst.IN0
+S1 => inst4.IN0
+S1 => inst2.IN1
+S1 => inst3.IN1
+S0 => inst5.IN0
+S0 => inst3.IN2
+S0 => inst1.IN2
+D2 => inst2.IN0
+D3 => inst3.IN0
+D1 => inst1.IN0
+
+

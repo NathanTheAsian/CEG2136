@@ -1,0 +1,27 @@
+[
+  {
+    "test": "state4bit",
+    "cases": 128,
+    "failures": 0
+  },
+  {
+    "test": "state4bit_register_0",
+    "cases": 147,
+    "failures": 0
+  },
+  {
+    "test": "state4bit_register_1",
+    "cases": 147,
+    "failures": 0
+  },
+  {
+    "test": "state4bit_register_2",
+    "cases": 147,
+    "failures": 0
+  },
+  {
+    "test": "state4bit_register_3",
+    "cases": 147,
+    "failures": 0
+  }
+]
