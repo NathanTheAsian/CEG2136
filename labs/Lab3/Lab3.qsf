@@ -58,24 +58,31 @@ set_global_assignment -name BDF_FILE Tools/EightOneMUX.bdf
 set_global_assignment -name BDF_FILE Tools/FourOneMUX.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FourBitAdderTest.vwf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/FAddrTest.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Tools/FourOneMUXtest.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/MUXACtest.vwf
 
 set_global_assignment -name BDF_FILE Tools/4bitRegister.bdf
 set_global_assignment -name BDF_FILE Tools/state4bit.bdf
 
-set_global_assignment -name BDF_FILE Tools/state4bit_register.bdf
 
 set_global_assignment -name BDF_FILE Tools/TwoOneMux.bdf
 set_global_assignment -name BDF_FILE Tools/Lab3_top.bdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE Tools/toptest.vwf
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/MSBLogicUnit.vwf
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name EDA_GENERATE_FUNCTIONAL_NETLIST ON -section_id eda_simulation
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourOneMuxSim.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/TwoOneMuxSim.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/OneBitLogicCircuitSim.vwf
+set_global_assignment -name BDF_FILE Waveforms/LogicCircuit/OneBitPreMux.bdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/OneBitPreMux.vwf
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit.vwf
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/natha/CEG2136/labs/Lab3/Waveforms/LogicCircuit/FourBitLogicCircuit.vwf"
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit/000_0001.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit/000_001.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit/010.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit/010_011.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit/100_101.vwf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/LogicCircuit/FourBitLogicCircuit/110_111.vwf
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/natha/CEG2136/labs/Lab3/Waveforms/LogicCircuit/FourBitLogicCircuit/110_111.vwf"

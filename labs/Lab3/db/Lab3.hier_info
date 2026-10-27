@@ -32,10 +32,14 @@ A0 => 1bitLogicCircuit:inst4.B
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst
-CL_i <= TwoOneMux:inst22.Out
+CL_i <= TwoOneMux:inst21.Out
+S2 => TwoOneMux:inst21.S
+S2 => FourOneMUX:inst.E
 S2 => inst1.IN0
-S2 => FourOneMUX:inst9.E
-S2 => TwoOneMux:inst22.S
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst11.S0
 B => inst13.IN0
 B => inst14.IN1
 B => inst16.IN0
@@ -44,25 +48,20 @@ A => inst13.IN1
 A => inst14.IN0
 A => inst16.IN1
 A => inst17.IN0
-S1 => FourOneMUX:inst.S1
-S1 => FourOneMUX:inst9.S0
-S0 => FourOneMUX:inst.S0
-S0 => FourOneMUX:inst9.S1
-A_left => FourOneMUX:inst9.D2
-A_right => FourOneMUX:inst9.D3
+A_left => FourOneMUX:inst11.D2
+A_right => FourOneMUX:inst11.D3
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst22
-Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
-D0 => inst5.IN0
-S => inst.IN0
-S => inst4.IN1
-D1 => inst4.IN0
+|4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21
+Out <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+D1 => inst5.IN0
+S => inst5.IN1
+S => inst1.IN0
+D0 => inst.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -70,14 +69,14 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst9
+|4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -85,16 +84,21 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst10
-CL_i <= TwoOneMux:inst22.Out
+CL_i <= TwoOneMux:inst21.Out
+S2 => TwoOneMux:inst21.S
+S2 => FourOneMUX:inst.E
 S2 => inst1.IN0
-S2 => FourOneMUX:inst9.E
-S2 => TwoOneMux:inst22.S
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst11.S0
 B => inst13.IN0
 B => inst14.IN1
 B => inst16.IN0
@@ -103,25 +107,20 @@ A => inst13.IN1
 A => inst14.IN0
 A => inst16.IN1
 A => inst17.IN0
-S1 => FourOneMUX:inst.S1
-S1 => FourOneMUX:inst9.S0
-S0 => FourOneMUX:inst.S0
-S0 => FourOneMUX:inst9.S1
-A_left => FourOneMUX:inst9.D2
-A_right => FourOneMUX:inst9.D3
+A_left => FourOneMUX:inst11.D2
+A_right => FourOneMUX:inst11.D3
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst22
-Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
-D0 => inst5.IN0
-S => inst.IN0
-S => inst4.IN1
-D1 => inst4.IN0
+|4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21
+Out <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+D1 => inst5.IN0
+S => inst5.IN1
+S => inst1.IN0
+D0 => inst.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -129,14 +128,14 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst9
+|4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -144,16 +143,21 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst3
-CL_i <= TwoOneMux:inst22.Out
+CL_i <= TwoOneMux:inst21.Out
+S2 => TwoOneMux:inst21.S
+S2 => FourOneMUX:inst.E
 S2 => inst1.IN0
-S2 => FourOneMUX:inst9.E
-S2 => TwoOneMux:inst22.S
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst11.S0
 B => inst13.IN0
 B => inst14.IN1
 B => inst16.IN0
@@ -162,25 +166,20 @@ A => inst13.IN1
 A => inst14.IN0
 A => inst16.IN1
 A => inst17.IN0
-S1 => FourOneMUX:inst.S1
-S1 => FourOneMUX:inst9.S0
-S0 => FourOneMUX:inst.S0
-S0 => FourOneMUX:inst9.S1
-A_left => FourOneMUX:inst9.D2
-A_right => FourOneMUX:inst9.D3
+A_left => FourOneMUX:inst11.D2
+A_right => FourOneMUX:inst11.D3
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst22
-Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
-D0 => inst5.IN0
-S => inst.IN0
-S => inst4.IN1
-D1 => inst4.IN0
+|4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21
+Out <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+D1 => inst5.IN0
+S => inst5.IN1
+S => inst1.IN0
+D0 => inst.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -188,14 +187,14 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst9
+|4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -203,16 +202,21 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst4
-CL_i <= TwoOneMux:inst22.Out
+CL_i <= TwoOneMux:inst21.Out
+S2 => TwoOneMux:inst21.S
+S2 => FourOneMUX:inst.E
 S2 => inst1.IN0
-S2 => FourOneMUX:inst9.E
-S2 => TwoOneMux:inst22.S
+S1 => FourOneMUX:inst.S1
+S1 => FourOneMUX:inst11.S1
+S0 => FourOneMUX:inst.S0
+S0 => FourOneMUX:inst11.S0
 B => inst13.IN0
 B => inst14.IN1
 B => inst16.IN0
@@ -221,25 +225,20 @@ A => inst13.IN1
 A => inst14.IN0
 A => inst16.IN1
 A => inst17.IN0
-S1 => FourOneMUX:inst.S1
-S1 => FourOneMUX:inst9.S0
-S0 => FourOneMUX:inst.S0
-S0 => FourOneMUX:inst9.S1
-A_left => FourOneMUX:inst9.D2
-A_right => FourOneMUX:inst9.D3
+A_left => FourOneMUX:inst11.D2
+A_right => FourOneMUX:inst11.D3
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst22
-Out <= inst6.DB_MAX_OUTPUT_PORT_TYPE
-D0 => inst5.IN0
-S => inst.IN0
-S => inst4.IN1
-D1 => inst4.IN0
+|4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21
+Out <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+D1 => inst5.IN0
+S => inst5.IN1
+S => inst1.IN0
+D0 => inst.IN0
 
 
 |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -247,14 +246,14 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0
 
 
-|4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst9
+|4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11
 Out <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-E => inst7.IN0
 D0 => inst.IN0
 S1 => inst4.IN0
 S1 => inst2.IN1
@@ -262,6 +261,7 @@ S1 => inst3.IN1
 S0 => inst5.IN0
 S0 => inst3.IN2
 S0 => inst1.IN2
+E => inst6.IN0
 D2 => inst2.IN0
 D3 => inst3.IN0
 D1 => inst1.IN0

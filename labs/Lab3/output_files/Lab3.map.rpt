@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab3
-Wed Oct 21 15:50:29 2026
+Mon Oct 26 21:35:45 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -41,13 +41,13 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Oct 21 15:50:29 2026           ;
+; Analysis & Synthesis Status        ; Successful - Mon Oct 26 21:35:45 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Lab3                                            ;
 ; Top-level Entity Name              ; 4bitLogicCircuit                                ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 0                                               ;
-;     Total combinational functions  ; 0                                               ;
+; Total logic elements               ; 17                                              ;
+;     Total combinational functions  ; 17                                              ;
 ;     Dedicated logic registers      ; 0                                               ;
 ; Total registers                    ; 0                                               ;
 ; Total pins                         ; 15                                              ;
@@ -151,7 +151,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 20     ;
+; Number detected on machine ; 24     ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
@@ -168,42 +168,55 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------+---------+
 
 
-+----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary              ;
-+---------------------------------------------+------------+
-; Resource                                    ; Usage      ;
-+---------------------------------------------+------------+
-;                                             ;            ;
-; Total combinational functions               ; 0          ;
-; Logic element usage by number of LUT inputs ;            ;
-;     -- 4 input functions                    ; 0          ;
-;     -- 3 input functions                    ; 0          ;
-;     -- <=2 input functions                  ; 0          ;
-;                                             ;            ;
-; Logic elements by mode                      ;            ;
-;     -- normal mode                          ; 0          ;
-;     -- arithmetic mode                      ; 0          ;
-;                                             ;            ;
-; Total registers                             ; 0          ;
-;     -- Dedicated logic registers            ; 0          ;
-;     -- I/O registers                        ; 0          ;
-;                                             ;            ;
-; I/O pins                                    ; 15         ;
-; Embedded Multiplier 9-bit elements          ; 0          ;
-; Maximum fan-out node                        ; CL3~output ;
-; Maximum fan-out                             ; 1          ;
-; Total fan-out                               ; 15         ;
-; Average fan-out                             ; 0.50       ;
-+---------------------------------------------+------------+
++--------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary            ;
++---------------------------------------------+----------+
+; Resource                                    ; Usage    ;
++---------------------------------------------+----------+
+; Estimated Total logic elements              ; 17       ;
+;                                             ;          ;
+; Total combinational functions               ; 17       ;
+; Logic element usage by number of LUT inputs ;          ;
+;     -- 4 input functions                    ; 10       ;
+;     -- 3 input functions                    ; 6        ;
+;     -- <=2 input functions                  ; 1        ;
+;                                             ;          ;
+; Logic elements by mode                      ;          ;
+;     -- normal mode                          ; 17       ;
+;     -- arithmetic mode                      ; 0        ;
+;                                             ;          ;
+; Total registers                             ; 0        ;
+;     -- Dedicated logic registers            ; 0        ;
+;     -- I/O registers                        ; 0        ;
+;                                             ;          ;
+; I/O pins                                    ; 15       ;
+; Embedded Multiplier 9-bit elements          ; 0        ;
+; Maximum fan-out node                        ; S0~input ;
+; Maximum fan-out                             ; 12       ;
+; Total fan-out                               ; 79       ;
+; Average fan-out                             ; 1.68     ;
++---------------------------------------------+----------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
-; |4bitLogicCircuit          ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |4bitLogicCircuit   ; work         ;
-+----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                  ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                        ; Library Name ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
+; |4bitLogicCircuit            ; 17 (0)            ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 15   ; 0            ; |4bitLogicCircuit                                          ; work         ;
+;    |1bitLogicCircuit:inst10| ; 4 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst10                  ; work         ;
+;       |TwoOneMux:inst21|     ; 4 (4)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21 ; work         ;
+;    |1bitLogicCircuit:inst3|  ; 5 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3                   ; work         ;
+;       |FourOneMUX:inst11|    ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11 ; work         ;
+;       |FourOneMUX:inst|      ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst   ; work         ;
+;       |TwoOneMux:inst21|     ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21  ; work         ;
+;    |1bitLogicCircuit:inst4|  ; 5 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst4                   ; work         ;
+;       |FourOneMUX:inst11|    ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11 ; work         ;
+;       |FourOneMUX:inst|      ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst   ; work         ;
+;       |TwoOneMux:inst21|     ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21  ; work         ;
+;    |1bitLogicCircuit:inst|   ; 3 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst                    ; work         ;
+;       |TwoOneMux:inst21|     ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21   ; work         ;
++------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
@@ -237,7 +250,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Oct 21 15:50:28 2026
+    Info: Processing started: Mon Oct 26 21:35:45 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab3 -c Lab3
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file arithmetic/1bitarithmeticcircuit.bdf
@@ -260,44 +273,29 @@ Info (12021): Found 1 design units, including 1 entities, in source file tools/4
     Info (12023): Found entity 1: 4bitRegister
 Info (12021): Found 1 design units, including 1 entities, in source file tools/state4bit.bdf
     Info (12023): Found entity 1: state4bit
-Info (12021): Found 1 design units, including 1 entities, in source file tools/state4bit_register.bdf
-    Info (12023): Found entity 1: state4bit_register
 Info (12021): Found 1 design units, including 1 entities, in source file tools/twoonemux.bdf
     Info (12023): Found entity 1: TwoOneMux
 Info (12021): Found 1 design units, including 1 entities, in source file tools/lab3_top.bdf
     Info (12023): Found entity 1: Lab3_top
+Info (12021): Found 1 design units, including 1 entities, in source file waveforms/logiccircuit/onebitpremux.bdf
+    Info (12023): Found entity 1: OneBitPreMux
 Info (12127): Elaborating entity "4bitLogicCircuit" for the top level hierarchy
 Info (12128): Elaborating entity "1bitLogicCircuit" for hierarchy "1bitLogicCircuit:inst"
 Warning (275008): Primitive "NOT" of instance "inst2" not used
 Warning (275008): Primitive "NOT" of instance "inst3" not used
-Info (12128): Elaborating entity "TwoOneMux" for hierarchy "1bitLogicCircuit:inst|TwoOneMux:inst22"
+Info (12128): Elaborating entity "TwoOneMux" for hierarchy "1bitLogicCircuit:inst|TwoOneMux:inst21"
 Info (12128): Elaborating entity "FourOneMUX" for hierarchy "1bitLogicCircuit:inst|FourOneMUX:inst"
-Warning (13024): Output pins are stuck at VCC or GND
-    Warning (13410): Pin "CL3" is stuck at GND
-    Warning (13410): Pin "CL2" is stuck at GND
-    Warning (13410): Pin "CL1" is stuck at GND
-    Warning (13410): Pin "CL0" is stuck at GND
+Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Warning (21074): Design contains 11 input pin(s) that do not drive logic
-    Warning (15610): No output dependent on input pin "S2"
-    Warning (15610): No output dependent on input pin "S1"
-    Warning (15610): No output dependent on input pin "S0"
-    Warning (15610): No output dependent on input pin "B3"
-    Warning (15610): No output dependent on input pin "A3"
-    Warning (15610): No output dependent on input pin "B1"
-    Warning (15610): No output dependent on input pin "B2"
-    Warning (15610): No output dependent on input pin "A2"
-    Warning (15610): No output dependent on input pin "B0"
-    Warning (15610): No output dependent on input pin "A1"
-    Warning (15610): No output dependent on input pin "A0"
-Info (21057): Implemented 15 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 32 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 11 input pins
     Info (21059): Implemented 4 output pins
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 20 warnings
-    Info: Peak virtual memory: 4583 megabytes
-    Info: Processing ended: Wed Oct 21 15:50:29 2026
-    Info: Elapsed time: 00:00:01
+    Info (21061): Implemented 17 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 3 warnings
+    Info: Peak virtual memory: 4587 megabytes
+    Info: Processing ended: Mon Oct 26 21:35:45 2026
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:01
 
 
