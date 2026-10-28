@@ -1,5 +1,5 @@
 Simulator report for Lab3_qsim
-Mon Oct 26 21:44:31 2026
+Wed Oct 28 15:19:21 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -45,43 +45,43 @@ applicable agreement for further details.
 +-----------------------------+--------------+
 ; Simulation Start Time       ; 0 ps         ;
 ; Simulation End Time         ; 1.0 us       ;
-; Simulation Netlist Size     ; 77 nodes     ;
-; Simulation Coverage         ;      49.35 % ;
-; Total Number of Transitions ; 1486         ;
+; Simulation Netlist Size     ; 82 nodes     ;
+; Simulation Coverage         ;      53.66 % ;
+; Total Number of Transitions ; 2530         ;
 ; Simulation Breakpoints      ; 0            ;
 ; Family                      ; Cyclone III  ;
 +-----------------------------+--------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulator Settings                                                                                                                                                                                   ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+---------------+
-; Option                                                                                     ; Setting                                                                                 ; Default Value ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+---------------+
-; Simulation mode                                                                            ; Functional                                                                              ; Timing        ;
-; Start time                                                                                 ; 0 ns                                                                                    ; 0 ns          ;
-; Simulation results format                                                                  ; VWF                                                                                     ;               ;
-; Vector input source                                                                        ; C:/Users/natha/CEG2136/labs/Lab3/Waveforms/LogicCircuit/FourBitLogicCircuit/110_111.vwf ;               ;
-; Add pins automatically to simulation output waveforms                                      ; On                                                                                      ; On            ;
-; Check outputs                                                                              ; Off                                                                                     ; Off           ;
-; Report simulation coverage                                                                 ; On                                                                                      ; On            ;
-; Display complete 1/0 value coverage report                                                 ; On                                                                                      ; On            ;
-; Display missing 1-value coverage report                                                    ; On                                                                                      ; On            ;
-; Display missing 0-value coverage report                                                    ; On                                                                                      ; On            ;
-; Detect setup and hold time violations                                                      ; Off                                                                                     ; Off           ;
-; Detect glitches                                                                            ; Off                                                                                     ; Off           ;
-; Disable timing delays in Timing Simulation                                                 ; Off                                                                                     ; Off           ;
-; Generate Signal Activity File                                                              ; Off                                                                                     ; Off           ;
-; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                                                                     ; Off           ;
-; Group bus channels in simulation results                                                   ; Off                                                                                     ; Off           ;
-; Preserve fewer signal transitions to reduce memory requirements                            ; On                                                                                      ; On            ;
-; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                                                                              ; INPUT_EDGE    ;
-; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                                                                     ; Off           ;
-; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off                                                                                     ;               ;
-; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                                                                    ; Auto          ;
-; Interconnect Delay Model Type                                                              ; Transport                                                                               ; Transport     ;
-; Cell Delay Model Type                                                                      ; Transport                                                                               ; Transport     ;
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------+---------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulator Settings                                                                                                                                                                                    ;
++--------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------------+
+; Option                                                                                     ; Setting                                                                                  ; Default Value ;
++--------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------------+
+; Simulation mode                                                                            ; Functional                                                                               ; Timing        ;
+; Start time                                                                                 ; 0 ns                                                                                     ; 0 ns          ;
+; Simulation results format                                                                  ; VWF                                                                                      ;               ;
+; Vector input source                                                                        ; C:/Users/natha/CEG2136/labs/Lab3/Waveforms/LogicCircuit/FourBitLogicCircuit/000_0001.vwf ;               ;
+; Add pins automatically to simulation output waveforms                                      ; On                                                                                       ; On            ;
+; Check outputs                                                                              ; Off                                                                                      ; Off           ;
+; Report simulation coverage                                                                 ; On                                                                                       ; On            ;
+; Display complete 1/0 value coverage report                                                 ; On                                                                                       ; On            ;
+; Display missing 1-value coverage report                                                    ; On                                                                                       ; On            ;
+; Display missing 0-value coverage report                                                    ; On                                                                                       ; On            ;
+; Detect setup and hold time violations                                                      ; Off                                                                                      ; Off           ;
+; Detect glitches                                                                            ; Off                                                                                      ; Off           ;
+; Disable timing delays in Timing Simulation                                                 ; Off                                                                                      ; Off           ;
+; Generate Signal Activity File                                                              ; Off                                                                                      ; Off           ;
+; Generate VCD File for PowerPlay Power Analyzer                                             ; Off                                                                                      ; Off           ;
+; Group bus channels in simulation results                                                   ; Off                                                                                      ; Off           ;
+; Preserve fewer signal transitions to reduce memory requirements                            ; On                                                                                       ; On            ;
+; Trigger vector comparison with the specified mode                                          ; INPUT_EDGE                                                                               ; INPUT_EDGE    ;
+; Disable setup and hold time violations detection in input registers of bi-directional pins ; Off                                                                                      ; Off           ;
+; Overwrite Waveform Inputs With Simulation Outputs                                          ; Off                                                                                      ;               ;
+; Perform Glitch Filtering in Timing Simulation                                              ; Auto                                                                                     ; Auto          ;
+; Interconnect Delay Model Type                                                              ; Transport                                                                                ; Transport     ;
+; Cell Delay Model Type                                                                      ; Transport                                                                                ; Transport     ;
++--------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+---------------+
 
 
 +----------------------+
@@ -96,61 +96,67 @@ Please use Quartus II 64-Bit to view the waveform report data.
 +-----------------------------------------------------+--------------+
 ; Type                                                ; Value        ;
 +-----------------------------------------------------+--------------+
-; Total coverage as a percentage                      ;      49.35 % ;
-; Total nodes checked                                 ; 77           ;
-; Total output ports checked                          ; 77           ;
-; Total output ports with complete 1/0-value coverage ; 38           ;
-; Total output ports with no 1/0-value coverage       ; 31           ;
-; Total output ports with no 1-value coverage         ; 31           ;
-; Total output ports with no 0-value coverage         ; 39           ;
+; Total coverage as a percentage                      ;      53.66 % ;
+; Total nodes checked                                 ; 82           ;
+; Total output ports checked                          ; 82           ;
+; Total output ports with complete 1/0-value coverage ; 44           ;
+; Total output ports with no 1/0-value coverage       ; 30           ;
+; Total output ports with no 1-value coverage         ; 30           ;
+; Total output ports with no 0-value coverage         ; 38           ;
 +-----------------------------------------------------+--------------+
 
 
 The following table displays output ports that toggle between 1 and 0 during simulation.
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Complete 1/0-Value Coverage                                                                                                                              ;
-+-------------------------------------------------------------------+-------------------------------------------------------------------+------------------+
-; Node Name                                                         ; Output Port Name                                                  ; Output Port Type ;
-+-------------------------------------------------------------------+-------------------------------------------------------------------+------------------+
-; |4bitLogicCircuit|A3                                              ; |4bitLogicCircuit|A3                                              ; out              ;
-; |4bitLogicCircuit|CL2                                             ; |4bitLogicCircuit|CL2                                             ; pin_out          ;
-; |4bitLogicCircuit|B1                                              ; |4bitLogicCircuit|B1                                              ; out              ;
-; |4bitLogicCircuit|B2                                              ; |4bitLogicCircuit|B2                                              ; out              ;
-; |4bitLogicCircuit|A2                                              ; |4bitLogicCircuit|A2                                              ; out              ;
-; |4bitLogicCircuit|CL1                                             ; |4bitLogicCircuit|CL1                                             ; pin_out          ;
-; |4bitLogicCircuit|B0                                              ; |4bitLogicCircuit|B0                                              ; out              ;
-; |4bitLogicCircuit|A1                                              ; |4bitLogicCircuit|A1                                              ; out              ;
-; |4bitLogicCircuit|CL0                                             ; |4bitLogicCircuit|CL0                                             ; pin_out          ;
-; |4bitLogicCircuit|A0                                              ; |4bitLogicCircuit|A0                                              ; out              ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst13                   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst13                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst14                   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst14                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst16                   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst16                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst18                   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst18                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst7  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst3  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst3  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst4   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst4   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst5   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst5   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst13                   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst13                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst14                   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst14                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst16                   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst16                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst18                   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst18                   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst7  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst2  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst2  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst4   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst4   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst5   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst5   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst13                  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst13                  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst14                  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst14                  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst16                  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst16                  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst18                  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst18                  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst7 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst7 ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst2 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst2 ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst4  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst4  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst5  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst5  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|inst13                    ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst13                    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|inst14                    ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst14                    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|inst16                    ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst16                    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|inst18                    ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst18                    ; out0             ;
-+-------------------------------------------------------------------+-------------------------------------------------------------------+------------------+
++--------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Complete 1/0-Value Coverage                                                                                                                            ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------+
+; Node Name                                                        ; Output Port Name                                                 ; Output Port Type ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------+
+; |4bitLogicCircuit|A3                                             ; |4bitLogicCircuit|A3                                             ; out              ;
+; |4bitLogicCircuit|CL2                                            ; |4bitLogicCircuit|CL2                                            ; pin_out          ;
+; |4bitLogicCircuit|inst6                                          ; |4bitLogicCircuit|inst6                                          ; out0             ;
+; |4bitLogicCircuit|B1                                             ; |4bitLogicCircuit|B1                                             ; out              ;
+; |4bitLogicCircuit|B2                                             ; |4bitLogicCircuit|B2                                             ; out              ;
+; |4bitLogicCircuit|A2                                             ; |4bitLogicCircuit|A2                                             ; out              ;
+; |4bitLogicCircuit|CL1                                            ; |4bitLogicCircuit|CL1                                            ; pin_out          ;
+; |4bitLogicCircuit|inst7                                          ; |4bitLogicCircuit|inst7                                          ; out0             ;
+; |4bitLogicCircuit|B0                                             ; |4bitLogicCircuit|B0                                             ; out              ;
+; |4bitLogicCircuit|A1                                             ; |4bitLogicCircuit|A1                                             ; out              ;
+; |4bitLogicCircuit|CL0                                            ; |4bitLogicCircuit|CL0                                            ; pin_out          ;
+; |4bitLogicCircuit|inst8                                          ; |4bitLogicCircuit|inst8                                          ; out0             ;
+; |4bitLogicCircuit|A0                                             ; |4bitLogicCircuit|A0                                             ; out              ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst13                  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst13                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst14                  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst14                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst16                  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst16                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst18                  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|inst18                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst7   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst7   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst2   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst2   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst3   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst3   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst4  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst4  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst13                  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst13                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst14                  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst14                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst16                  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst16                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst18                  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|inst18                  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst7   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst7   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst2   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst2   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst3   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst3   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst4  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst4  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst13                 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst13                 ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst14                 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst14                 ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst16                 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst16                 ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst18                 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|inst18                 ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst7  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst2  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst2  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst3  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst3  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst4 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst4 ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|inst13                   ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst13                   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|inst14                   ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst14                   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|inst16                   ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst16                   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|inst18                   ; |4bitLogicCircuit|1bitLogicCircuit:inst|inst18                   ; out0             ;
++------------------------------------------------------------------+------------------------------------------------------------------+------------------+
 
 
 The following table displays output ports that do not toggle to 1 during simulation.
@@ -161,35 +167,34 @@ The following table displays output ports that do not toggle to 1 during simulat
 +-------------------------------------------------------------------+-------------------------------------------------------------------+------------------+
 ; |4bitLogicCircuit|S2                                              ; |4bitLogicCircuit|S2                                              ; out              ;
 ; |4bitLogicCircuit|S1                                              ; |4bitLogicCircuit|S1                                              ; out              ;
+; |4bitLogicCircuit|E                                               ; |4bitLogicCircuit|E                                               ; out              ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst7  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst3  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst3  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst1  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst1  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst7    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst7    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst2    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst2    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst3    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst3    ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst1    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst1    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst    ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst5   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst5   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst7  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst2  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst2  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst3  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst3  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst1  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst1  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst7    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst7    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst2    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst2    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst3    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst3    ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst1    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst1    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst    ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst5   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst5   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst7 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst7 ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst2 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst2 ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst1 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst1 ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst7   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst7   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst2   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst2   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst3   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst3   ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst1   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst1   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst5  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst5  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst7   ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst7   ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst    ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst    ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst2   ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst2   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst3   ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst3   ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst1   ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst1   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst7     ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst7     ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst2     ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst2     ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst3     ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst3     ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst1     ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst|inst1     ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21|inst     ; |4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21|inst     ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21|inst5    ; |4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21|inst5    ; out0             ;
 +-------------------------------------------------------------------+-------------------------------------------------------------------+------------------+
 
 
@@ -200,32 +205,31 @@ The following table displays output ports that do not toggle to 0 during simulat
 ; Node Name                                                         ; Output Port Name                                                  ; Output Port Type ;
 +-------------------------------------------------------------------+-------------------------------------------------------------------+------------------+
 ; |4bitLogicCircuit|CL3                                             ; |4bitLogicCircuit|CL3                                             ; pin_out          ;
+; |4bitLogicCircuit|inst5                                           ; |4bitLogicCircuit|inst5                                           ; out0             ;
 ; |4bitLogicCircuit|S2                                              ; |4bitLogicCircuit|S2                                              ; out              ;
 ; |4bitLogicCircuit|S1                                              ; |4bitLogicCircuit|S1                                              ; out              ;
 ; |4bitLogicCircuit|S0                                              ; |4bitLogicCircuit|S0                                              ; out              ;
 ; |4bitLogicCircuit|B3                                              ; |4bitLogicCircuit|B3                                              ; out              ;
+; |4bitLogicCircuit|E                                               ; |4bitLogicCircuit|E                                               ; out              ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst7  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst3  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst3  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst1  ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst11|inst1  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst7    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst7    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst2    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst2    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst3    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst3    ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst1    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|FourOneMUX:inst|inst1    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst    ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst    ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst5   ; |4bitLogicCircuit|1bitLogicCircuit:inst4|TwoOneMux:inst21|inst5   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst7  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst7  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst2  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst2  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst3  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst3  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst1  ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11|inst1  ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst7    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst7    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst2    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst2    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst3    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst3    ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst1    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst|inst1    ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst    ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst    ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst5   ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21|inst5   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst7 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst7 ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst  ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst2 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst2 ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst1 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst11|inst1 ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst7   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst7   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst2   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst2   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst3   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst3   ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst1   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|FourOneMUX:inst|inst1   ; out0             ;
-; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst   ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst   ; out0             ;
+; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst5  ; |4bitLogicCircuit|1bitLogicCircuit:inst10|TwoOneMux:inst21|inst5  ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst7   ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst7   ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst    ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst    ; out0             ;
 ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst2   ; |4bitLogicCircuit|1bitLogicCircuit:inst|FourOneMUX:inst11|inst2   ; out0             ;
@@ -254,19 +258,19 @@ The following table displays output ports that do not toggle to 0 during simulat
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Simulator
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Mon Oct 26 21:44:30 2026
+    Info: Processing started: Wed Oct 28 15:19:21 2026
 Info: Command: quartus_sim --simulation_results_format=VWF Lab3 -c Lab3_qsim
-Info (324025): Using vector source file "C:/Users/natha/CEG2136/labs/Lab3/Waveforms/LogicCircuit/FourBitLogicCircuit/110_111.vwf"
+Info (324025): Using vector source file "C:/Users/natha/CEG2136/labs/Lab3/Waveforms/LogicCircuit/FourBitLogicCircuit/000_0001.vwf"
 Info (310003): Option to preserve fewer signal transitions to reduce memory requirements is enabled
     Info (310004): Simulation has been partitioned into sub-simulations according to the maximum transition count determined by the engine. Transitions from memory will be flushed out to disk at the end of each sub-simulation to reduce memory requirements.
 Info (310002): Simulation partitioned into 1 sub-simulations
-Info (328053): Simulation coverage is      49.35 %
-Info (328052): Number of transitions in simulation is 1486
+Info (328053): Simulation coverage is      53.66 %
+Info (328052): Number of transitions in simulation is 2530
 Info (324045): Vector file Lab3_qsim.sim.vwf is saved in VWF text format. You can compress it into CVWF format in order to reduce file size. For more details please refer to the Quartus II Help.
 Info: Quartus II 64-Bit Simulator was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4444 megabytes
-    Info: Processing ended: Mon Oct 26 21:44:31 2026
-    Info: Elapsed time: 00:00:01
+    Info: Processing ended: Wed Oct 28 15:19:21 2026
+    Info: Elapsed time: 00:00:00
     Info: Total CPU time (on all processors): 00:00:00
 
 

@@ -1,5 +1,5 @@
 |4bitLogicCircuit
-CL3 <= 1bitLogicCircuit:inst.CL_i
+CL3 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
 S2 => 1bitLogicCircuit:inst.S2
 S2 => 1bitLogicCircuit:inst10.S2
 S2 => 1bitLogicCircuit:inst3.S2
@@ -16,18 +16,19 @@ B3 => 1bitLogicCircuit:inst.A_right
 B3 => 1bitLogicCircuit:inst.A_left
 B3 => 1bitLogicCircuit:inst.A
 A3 => 1bitLogicCircuit:inst.B
-CL2 <= 1bitLogicCircuit:inst10.CL_i
+E => inst9.IN0
+CL2 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
 B1 => 1bitLogicCircuit:inst10.A_left
 B1 => 1bitLogicCircuit:inst3.A
 B1 => 1bitLogicCircuit:inst4.A_right
 B2 => 1bitLogicCircuit:inst10.A
 B2 => 1bitLogicCircuit:inst3.A_right
 A2 => 1bitLogicCircuit:inst10.B
-CL1 <= 1bitLogicCircuit:inst3.CL_i
+CL1 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
 B0 => 1bitLogicCircuit:inst3.A_left
 B0 => 1bitLogicCircuit:inst4.A
 A1 => 1bitLogicCircuit:inst3.B
-CL0 <= 1bitLogicCircuit:inst4.CL_i
+CL0 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
 A0 => 1bitLogicCircuit:inst4.B
 
 
