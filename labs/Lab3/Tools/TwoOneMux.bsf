@@ -26,8 +26,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 32)
 		(input)
-		(text "D1" (rect 0 0 15 14)(font "Arial" (font_size 8)))
-		(text "D1" (rect 21 27 36 41)(font "Arial" (font_size 8)))
+		(text "S" (rect 0 0 8 14)(font "Arial" (font_size 8)))
+		(text "S" (rect 21 27 29 41)(font "Arial" (font_size 8)))
 		(line (pt 0 32)(pt 16 32))
 	)
 	(port
@@ -40,8 +40,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 64)
 		(input)
-		(text "S" (rect 0 0 8 14)(font "Arial" (font_size 8)))
-		(text "S" (rect 21 59 29 73)(font "Arial" (font_size 8)))
+		(text "D1" (rect 0 0 15 14)(font "Arial" (font_size 8)))
+		(text "D1" (rect 21 59 36 73)(font "Arial" (font_size 8)))
 		(line (pt 0 64)(pt 16 64))
 	)
 	(port

@@ -21,7 +21,7 @@ applicable agreement for further details.
 (header "graphic" (version "1.4"))
 (pin
 	(input)
-	(rect 496 680 664 696)
+	(rect 496 688 664 704)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
 	(text "CLRN" (rect 5 0 35 12)(font "Arial" ))
 	(pt 168 8)
@@ -37,9 +37,9 @@ applicable agreement for further details.
 )
 (pin
 	(input)
-	(rect 496 704 664 720)
+	(rect 504 736 672 752)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "CLK" (rect 5 0 27 12)(font "Arial" ))
+	(text "CLK" (rect 5 0 26 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -55,7 +55,7 @@ applicable agreement for further details.
 	(input)
 	(rect 560 312 728 328)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "P3" (rect 5 0 18 12)(font "Arial" ))
+	(text "P3" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -71,7 +71,7 @@ applicable agreement for further details.
 	(input)
 	(rect 560 336 728 352)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "P2" (rect 5 0 18 12)(font "Arial" ))
+	(text "P2" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -87,7 +87,7 @@ applicable agreement for further details.
 	(input)
 	(rect 560 360 728 376)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "P1" (rect 5 0 18 12)(font "Arial" ))
+	(text "P1" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -103,7 +103,7 @@ applicable agreement for further details.
 	(input)
 	(rect 560 384 728 400)
 	(text "INPUT" (rect 125 0 153 10)(font "Arial" (font_size 6)))
-	(text "P0" (rect 5 0 18 12)(font "Arial" ))
+	(text "P0" (rect 5 0 17 12)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -403,10 +403,6 @@ applicable agreement for further details.
 	(pt 848 384)
 )
 (connector
-	(pt 664 712)
-	(pt 840 712)
-)
-(connector
 	(pt 856 336)
 	(pt 840 336)
 )
@@ -535,14 +531,6 @@ applicable agreement for further details.
 	(pt 800 496)
 )
 (connector
-	(pt 672 688)
-	(pt 672 696)
-)
-(connector
-	(pt 664 688)
-	(pt 672 688)
-)
-(connector
 	(pt 848 592)
 	(pt 848 696)
 )
@@ -571,18 +559,6 @@ applicable agreement for further details.
 	(pt 888 688)
 )
 (connector
-	(pt 840 544)
-	(pt 840 648)
-)
-(connector
-	(pt 840 648)
-	(pt 840 712)
-)
-(connector
-	(pt 672 696)
-	(pt 848 696)
-)
-(connector
 	(pt 848 696)
 	(pt 888 696)
 )
@@ -609,6 +585,22 @@ applicable agreement for further details.
 (connector
 	(pt 800 496)
 	(pt 800 600)
+)
+(connector
+	(pt 840 744)
+	(pt 672 744)
+)
+(connector
+	(pt 840 544)
+	(pt 840 648)
+)
+(connector
+	(pt 840 648)
+	(pt 840 744)
+)
+(connector
+	(pt 664 696)
+	(pt 848 696)
 )
 (junction (pt 848 592))
 (junction (pt 840 544))

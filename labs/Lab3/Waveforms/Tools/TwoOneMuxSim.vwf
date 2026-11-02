@@ -1,3 +1,4 @@
+/* Simulator = Quartus II Simulator */
 /*
 WARNING: Do NOT edit the input and output ports in this file in a text
 editor if you plan to continue editing the block that represents it in
@@ -32,7 +33,7 @@ HEADER
 	GRID_DUTY_CYCLE = 50;
 }
 
-SIGNAL("A")
+SIGNAL("D0")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -42,7 +43,7 @@ SIGNAL("A")
 	PARENT = "";
 }
 
-SIGNAL("A_left")
+SIGNAL("D1")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -52,27 +53,7 @@ SIGNAL("A_left")
 	PARENT = "";
 }
 
-SIGNAL("A_right")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("B")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-SIGNAL("CL_i")
+SIGNAL("Out")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -82,7 +63,7 @@ SIGNAL("CL_i")
 	PARENT = "";
 }
 
-SIGNAL("S0")
+SIGNAL("S")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -92,7 +73,7 @@ SIGNAL("S0")
 	PARENT = "";
 }
 
-SIGNAL("S1")
+SIGNAL("E")
 {
 	VALUE_TYPE = NINE_LEVEL_BIT;
 	SIGNAL_TYPE = SINGLE_BIT;
@@ -102,22 +83,7 @@ SIGNAL("S1")
 	PARENT = "";
 }
 
-SIGNAL("S2")
-{
-	VALUE_TYPE = NINE_LEVEL_BIT;
-	SIGNAL_TYPE = SINGLE_BIT;
-	WIDTH = 1;
-	LSB_INDEX = -1;
-	DIRECTION = INPUT;
-	PARENT = "";
-}
-
-GROUP("Sel")
-{
-	MEMBERS = "S0", "S1", "S2";
-}
-
-TRANSITION_LIST("A")
+TRANSITION_LIST("D0")
 {
 	NODE
 	{
@@ -131,25 +97,7 @@ TRANSITION_LIST("A")
 	}
 }
 
-TRANSITION_LIST("A_left")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL 0 FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("A_right")
-{
-	NODE
-	{
-		REPEAT = 1;
-		LEVEL 0 FOR 1000.0;
-	}
-}
-
-TRANSITION_LIST("B")
+TRANSITION_LIST("D1")
 {
 	NODE
 	{
@@ -163,7 +111,7 @@ TRANSITION_LIST("B")
 	}
 }
 
-TRANSITION_LIST("CL_i")
+TRANSITION_LIST("Out")
 {
 	NODE
 	{
@@ -172,7 +120,7 @@ TRANSITION_LIST("CL_i")
 	}
 }
 
-TRANSITION_LIST("S0")
+TRANSITION_LIST("S")
 {
 	NODE
 	{
@@ -187,116 +135,57 @@ TRANSITION_LIST("S0")
 	}
 }
 
-TRANSITION_LIST("S1")
+TRANSITION_LIST("E")
 {
 	NODE
 	{
 		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 25;
-			LEVEL 0 FOR 20.0;
-			LEVEL 1 FOR 20.0;
-		}
-	}
-}
-
-TRANSITION_LIST("S2")
-{
-	NODE
-	{
-		REPEAT = 1;
-		NODE
-		{
-			REPEAT = 50;
-			LEVEL 0 FOR 10.0;
-			LEVEL 1 FOR 10.0;
-		}
+		LEVEL 0 FOR 1000.0;
 	}
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "Sel";
-	EXPAND_STATUS = EXPANDED;
+	CHANNEL = "D0";
+	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 0;
 	TREE_LEVEL = 0;
-	CHILDREN = 1, 2, 3;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "S0";
+	CHANNEL = "D1";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 1;
-	TREE_LEVEL = 1;
-	PARENT = 0;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "S1";
+	CHANNEL = "E";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 2;
-	TREE_LEVEL = 1;
-	PARENT = 0;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "S2";
+	CHANNEL = "Out";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 3;
-	TREE_LEVEL = 1;
-	PARENT = 0;
+	TREE_LEVEL = 0;
 }
 
 DISPLAY_LINE
 {
-	CHANNEL = "A";
+	CHANNEL = "S";
 	EXPAND_STATUS = COLLAPSED;
 	RADIX = Binary;
 	TREE_INDEX = 4;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "B";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 5;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "A_left";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 6;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "A_right";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 7;
-	TREE_LEVEL = 0;
-}
-
-DISPLAY_LINE
-{
-	CHANNEL = "CL_i";
-	EXPAND_STATUS = COLLAPSED;
-	RADIX = Binary;
-	TREE_INDEX = 8;
 	TREE_LEVEL = 0;
 }
 
