@@ -37,8 +37,8 @@
 
 
 set_global_assignment -name FAMILY "Cyclone IV E"
-set_global_assignment -name DEVICE EP4CE30F29C7
-set_global_assignment -name TOP_LEVEL_ENTITY 4bitLogicCircuit
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY Lab3_top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "17:32:29  OCTOBER 19, 2026"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
@@ -46,7 +46,6 @@ set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name SIMULATION_MODE FUNCTIONAL
 set_global_assignment -name BDF_FILE Arithmetic/1bitArithmeticCircuit.bdf
 set_global_assignment -name BDF_FILE Arithmetic/4bitArithmeticCircuit.bdf
@@ -85,8 +84,19 @@ set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/ArithmeticCircuit/Fou
 set_global_assignment -name VECTOR_WAVEFORM_FILE Waveforms/Register/4BitRegisterSim.vwf
 
 set_global_assignment -name VECTOR_WAVEFORM_FILE TopTest.vwf
-set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "C:/Users/natha/CEG2136/labs/Lab3/TopTest.vwf"
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
+set_location_assignment PIN_G19 -to C0
+set_location_assignment PIN_F19 -to C1
+set_location_assignment PIN_E19 -to C2
+set_location_assignment PIN_F21 -to C3
+set_location_assignment PIN_M23 -to CLK
+set_location_assignment PIN_Y23 -to CLRN
+set_location_assignment PIN_E21 -to Cy
+set_location_assignment PIN_E22 -to N
+set_location_assignment PIN_E24 -to V
+set_location_assignment PIN_E25 -to Z
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name INCREMENTAL_VECTOR_INPUT_SOURCE "E:/Lab3/TopTest.vwf"

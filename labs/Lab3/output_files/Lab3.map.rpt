@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab3
-Wed Nov 11 10:11:10 2026
+Wed Nov 11 12:40:13 2026
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -13,9 +13,11 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. General Register Statistics
-  9. Elapsed Time Per Partition
- 10. Analysis & Synthesis Messages
+  8. State Machine - |Lab3_top|input_generator_high_freq:inst17|pr_state
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Elapsed Time Per Partition
+ 12. Analysis & Synthesis Messages
 
 
 
@@ -41,16 +43,16 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Wed Nov 11 10:11:10 2026           ;
+; Analysis & Synthesis Status        ; Successful - Wed Nov 11 12:40:13 2026           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Lab3                                            ;
-; Top-level Entity Name              ; 4bitLogicCircuit                                ;
+; Top-level Entity Name              ; Lab3_top                                        ;
 ; Family                             ; Cyclone IV E                                    ;
-; Total logic elements               ; 21                                              ;
-;     Total combinational functions  ; 21                                              ;
-;     Dedicated logic registers      ; 0                                               ;
-; Total registers                    ; 0                                               ;
-; Total pins                         ; 16                                              ;
+; Total logic elements               ; 48                                              ;
+;     Total combinational functions  ; 33                                              ;
+;     Dedicated logic registers      ; 29                                              ;
+; Total registers                    ; 29                                              ;
+; Total pins                         ; 10                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0                                               ;
 ; Embedded Multiplier 9-bit elements ; 0                                               ;
@@ -63,8 +65,8 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
-; Device                                                                     ; EP4CE30F29C7       ;                    ;
-; Top-level entity name                                                      ; 4bitLogicCircuit   ; Lab3               ;
+; Device                                                                     ; EP4CE115F29C7      ;                    ;
+; Top-level entity name                                                      ; Lab3_top           ; Lab3               ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -151,67 +153,128 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 ; Processors                 ; Number ;
 +----------------------------+--------+
-; Number detected on machine ; 24     ;
+; Number detected on machine ; 6      ;
 ; Maximum allowed            ; 1      ;
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                          ;
-+----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                          ; File Name with Absolute Path                                ; Library ;
-+----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------+---------+
-; Logic/1bitLogicCircuit.bdf       ; yes             ; User Block Diagram/Schematic File  ; C:/Users/natha/CEG2136/labs/Lab3/Logic/1bitLogicCircuit.bdf ;         ;
-; Logic/4bitLogicCircuit.bdf       ; yes             ; User Block Diagram/Schematic File  ; C:/Users/natha/CEG2136/labs/Lab3/Logic/4bitLogicCircuit.bdf ;         ;
-; Tools/FourOneMUX.bdf             ; yes             ; User Block Diagram/Schematic File  ; C:/Users/natha/CEG2136/labs/Lab3/Tools/FourOneMUX.bdf       ;         ;
-; Tools/TwoOneMux.bdf              ; yes             ; User Block Diagram/Schematic File  ; C:/Users/natha/CEG2136/labs/Lab3/Tools/TwoOneMux.bdf        ;         ;
-+----------------------------------+-----------------+------------------------------------+-------------------------------------------------------------+---------+
++------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                               ;
++--------------------------------------+-----------------+------------------------------------+----------------------------------------------+---------+
+; File Name with User-Entered Path     ; Used in Netlist ; File Type                          ; File Name with Absolute Path                 ; Library ;
++--------------------------------------+-----------------+------------------------------------+----------------------------------------------+---------+
+; Arithmetic/1bitArithmeticCircuit.bdf ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Arithmetic/1bitArithmeticCircuit.bdf ;         ;
+; Arithmetic/4bitArithmeticCircuit.bdf ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Arithmetic/4bitArithmeticCircuit.bdf ;         ;
+; Arithmetic/FAddr.bdf                 ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Arithmetic/FAddr.bdf                 ;         ;
+; Logic/1bitLogicCircuit.bdf           ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Logic/1bitLogicCircuit.bdf           ;         ;
+; Logic/4bitLogicCircuit.bdf           ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Logic/4bitLogicCircuit.bdf           ;         ;
+; Tools/FourOneMUX.bdf                 ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Tools/FourOneMUX.bdf                 ;         ;
+; Tools/4bitRegister.bdf               ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Tools/4bitRegister.bdf               ;         ;
+; Tools/state4bit.bdf                  ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Tools/state4bit.bdf                  ;         ;
+; Tools/TwoOneMux.bdf                  ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Tools/TwoOneMux.bdf                  ;         ;
+; Tools/Lab3_top.bdf                   ; yes             ; User Block Diagram/Schematic File  ; E:/Lab3/Tools/Lab3_top.bdf                   ;         ;
+; input_generator_high_freq.vhd        ; yes             ; Auto-Found VHDL File               ; E:/Lab3/input_generator_high_freq.vhd        ;         ;
++--------------------------------------+-----------------+------------------------------------+----------------------------------------------+---------+
 
 
-+--------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary            ;
-+---------------------------------------------+----------+
-; Resource                                    ; Usage    ;
-+---------------------------------------------+----------+
-; Estimated Total logic elements              ; 21       ;
-;                                             ;          ;
-; Total combinational functions               ; 21       ;
-; Logic element usage by number of LUT inputs ;          ;
-;     -- 4 input functions                    ; 15       ;
-;     -- 3 input functions                    ; 5        ;
-;     -- <=2 input functions                  ; 1        ;
-;                                             ;          ;
-; Logic elements by mode                      ;          ;
-;     -- normal mode                          ; 21       ;
-;     -- arithmetic mode                      ; 0        ;
-;                                             ;          ;
-; Total registers                             ; 0        ;
-;     -- Dedicated logic registers            ; 0        ;
-;     -- I/O registers                        ; 0        ;
-;                                             ;          ;
-; I/O pins                                    ; 16       ;
-; Embedded Multiplier 9-bit elements          ; 0        ;
-; Maximum fan-out node                        ; S0~input ;
-; Maximum fan-out                             ; 11       ;
-; Total fan-out                               ; 97       ;
-; Average fan-out                             ; 1.83     ;
-+---------------------------------------------+----------+
++---------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                                           ;
++---------------------------------------------+-----------------------------------------+
+; Resource                                    ; Usage                                   ;
++---------------------------------------------+-----------------------------------------+
+; Estimated Total logic elements              ; 48                                      ;
+;                                             ;                                         ;
+; Total combinational functions               ; 33                                      ;
+; Logic element usage by number of LUT inputs ;                                         ;
+;     -- 4 input functions                    ; 18                                      ;
+;     -- 3 input functions                    ; 7                                       ;
+;     -- <=2 input functions                  ; 8                                       ;
+;                                             ;                                         ;
+; Logic elements by mode                      ;                                         ;
+;     -- normal mode                          ; 33                                      ;
+;     -- arithmetic mode                      ; 0                                       ;
+;                                             ;                                         ;
+; Total registers                             ; 29                                      ;
+;     -- Dedicated logic registers            ; 29                                      ;
+;     -- I/O registers                        ; 0                                       ;
+;                                             ;                                         ;
+; I/O pins                                    ; 10                                      ;
+; Embedded Multiplier 9-bit elements          ; 0                                       ;
+; Maximum fan-out node                        ; input_generator_high_freq:inst17|my_clk ;
+; Maximum fan-out                             ; 17                                      ;
+; Total fan-out                               ; 198                                     ;
+; Average fan-out                             ; 2.41                                    ;
++---------------------------------------------+-----------------------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                 ;
-+-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node  ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                        ; Library Name ;
-+-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
-; |4bitLogicCircuit           ; 21 (11)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 16   ; 0            ; |4bitLogicCircuit                                          ; work         ;
-;    |1bitLogicCircuit:inst3| ; 5 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3                   ; work         ;
-;       |FourOneMUX:inst11|   ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst11 ; work         ;
-;       |FourOneMUX:inst|     ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3|FourOneMUX:inst   ; work         ;
-;       |TwoOneMux:inst21|    ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst3|TwoOneMux:inst21  ; work         ;
-;    |1bitLogicCircuit:inst|  ; 5 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst                    ; work         ;
-;       |TwoOneMux:inst21|    ; 5 (5)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |4bitLogicCircuit|1bitLogicCircuit:inst|TwoOneMux:inst21   ; work         ;
-+-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------+--------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                   ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------+--------------+
+; Compilation Hierarchy Node            ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                ; Library Name ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------+--------------+
+; |Lab3_top                             ; 33 (0)            ; 29 (0)       ; 0           ; 0            ; 0       ; 0         ; 10   ; 0            ; |Lab3_top                                                                          ; work         ;
+;    |4bitArithmeticCircuit:inst9|      ; 6 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitArithmeticCircuit:inst9                                              ; work         ;
+;       |1bitArithmeticCircuit:inst3|   ; 2 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitArithmeticCircuit:inst9|1bitArithmeticCircuit:inst3                  ; work         ;
+;          |FourOneMUX:inst8|           ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitArithmeticCircuit:inst9|1bitArithmeticCircuit:inst3|FourOneMUX:inst8 ; work         ;
+;       |FAddr:inst11|                  ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitArithmeticCircuit:inst9|FAddr:inst11                                 ; work         ;
+;       |FAddr:inst12|                  ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitArithmeticCircuit:inst9|FAddr:inst12                                 ; work         ;
+;       |FAddr:inst8|                   ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitArithmeticCircuit:inst9|FAddr:inst8                                  ; work         ;
+;    |4bitLogicCircuit:inst1|           ; 3 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1                                                   ; work         ;
+;       |1bitLogicCircuit:inst10|       ; 1 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst10                           ; work         ;
+;          |FourOneMUX:inst|            ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst10|FourOneMUX:inst           ; work         ;
+;       |1bitLogicCircuit:inst3|        ; 1 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst3                            ; work         ;
+;          |FourOneMUX:inst11|          ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst3|FourOneMUX:inst11          ; work         ;
+;       |1bitLogicCircuit:inst|         ; 1 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst                             ; work         ;
+;          |FourOneMUX:inst|            ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst|FourOneMUX:inst             ; work         ;
+;    |4bitRegister:inst13|              ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitRegister:inst13                                                      ; work         ;
+;    |4bitRegister:inst2|               ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitRegister:inst2                                                       ; work         ;
+;    |4bitRegister:inst|                ; 0 (0)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|4bitRegister:inst                                                        ; work         ;
+;    |TwoOneMux:inst11|                 ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|TwoOneMux:inst11                                                         ; work         ;
+;    |input_generator_high_freq:inst17| ; 16 (16)           ; 20 (20)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|input_generator_high_freq:inst17                                         ; work         ;
+;    |state4bit:inst90|                 ; 3 (3)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Lab3_top|state4bit:inst90                                                         ; work         ;
++---------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |Lab3_top|input_generator_high_freq:inst17|pr_state                                                                                                                                                                                                                                                    ;
++------------------+------------------+------------------+------------------+------------------+------------------+------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; Name             ; pr_state.state15 ; pr_state.state14 ; pr_state.state13 ; pr_state.state12 ; pr_state.state11 ; pr_state.state10 ; pr_state.state9 ; pr_state.state8 ; pr_state.state7 ; pr_state.state6 ; pr_state.state5 ; pr_state.state4 ; pr_state.state3 ; pr_state.state2 ; pr_state.state1 ; pr_state.state0 ;
++------------------+------------------+------------------+------------------+------------------+------------------+------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+; pr_state.state0  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ;
+; pr_state.state1  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 1               ;
+; pr_state.state2  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 1               ;
+; pr_state.state3  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 1               ;
+; pr_state.state4  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state5  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state6  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state7  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state8  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state9  ; 0                ; 0                ; 0                ; 0                ; 0                ; 0                ; 1               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state10 ; 0                ; 0                ; 0                ; 0                ; 0                ; 1                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state11 ; 0                ; 0                ; 0                ; 0                ; 1                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state12 ; 0                ; 0                ; 0                ; 1                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state13 ; 0                ; 0                ; 1                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state14 ; 0                ; 1                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
+; pr_state.state15 ; 1                ; 0                ; 0                ; 0                ; 0                ; 0                ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 0               ; 1               ;
++------------------+------------------+------------------+------------------+------------------+------------------+------------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+-----------------+
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; 4bitRegister:inst3|inst               ; Stuck at GND due to stuck port data_in ;
+; 4bitRegister:inst2|inst2              ; Stuck at GND due to stuck port data_in ;
+; 4bitRegister:inst2|inst3              ; Stuck at GND due to stuck port data_in ;
+; 4bitRegister:inst2|inst1              ; Merged with 4bitRegister:inst2|inst    ;
+; 4bitRegister:inst3|inst1              ; Merged with 4bitRegister:inst2|inst    ;
+; 4bitRegister:inst3|inst2              ; Merged with 4bitRegister:inst2|inst    ;
+; 4bitRegister:inst3|inst3              ; Merged with 4bitRegister:inst2|inst    ;
+; Total Number of Removed Registers = 7 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -219,10 +282,10 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
+; Total registers                              ; 29    ;
 ; Number of registers using Synchronous Clear  ; 0     ;
-; Number of registers using Synchronous Load   ; 0     ;
-; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Synchronous Load   ; 4     ;
+; Number of registers using Asynchronous Clear ; 9     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
 ; Number of registers using Clock Enable       ; 0     ;
 ; Number of registers using Preset             ; 0     ;
@@ -244,7 +307,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Nov 11 10:11:09 2026
+    Info: Processing started: Wed Nov 11 12:40:06 2026
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab3 -c Lab3
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file arithmetic/1bitarithmeticcircuit.bdf
@@ -273,23 +336,112 @@ Info (12021): Found 1 design units, including 1 entities, in source file tools/l
     Info (12023): Found entity 1: Lab3_top
 Info (12021): Found 1 design units, including 1 entities, in source file waveforms/logiccircuit/onebitlogiccircuit/onebitpremux.bdf
     Info (12023): Found entity 1: OneBitPreMux
-Info (12127): Elaborating entity "4bitLogicCircuit" for the top level hierarchy
-Info (12128): Elaborating entity "1bitLogicCircuit" for hierarchy "1bitLogicCircuit:inst"
+Info (12127): Elaborating entity "Lab3_top" for the top level hierarchy
+Warning (275008): Primitive "NOT" of instance "inst6" not used
+Warning (275008): Primitive "NOT" of instance "inst7" not used
+Warning (275008): Primitive "NOT" of instance "inst8" not used
+Info (12128): Elaborating entity "4bitRegister" for hierarchy "4bitRegister:inst13"
+Info (12128): Elaborating entity "TwoOneMux" for hierarchy "TwoOneMux:inst4"
+Warning (12125): Using design file input_generator_high_freq.vhd, which is not specified as a design file for the current project, but contains definitions for 2 design units and 1 entities in project
+    Info (12022): Found design unit 1: input_generator_high_freq-behavioral
+    Info (12023): Found entity 1: input_generator_high_freq
+Info (12128): Elaborating entity "input_generator_high_freq" for hierarchy "input_generator_high_freq:inst17"
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(56): signal "code0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(56): signal "code1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(56): signal "code2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(283): signal "code0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(283): signal "code1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(283): signal "code2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(510): signal "code0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(510): signal "code1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(510): signal "code2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(737): signal "code0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(737): signal "code1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(737): signal "code2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(964): signal "code0" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(964): signal "code1" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at input_generator_high_freq.vhd(964): signal "code2" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "nx_state", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "reset", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "S0", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "S1", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "S2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "S3", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "A0", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "A1", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "A2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "A3", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "B0", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "B1", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "B2", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at input_generator_high_freq.vhd(49): inferring latch(es) for signal or variable "B3", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "B3" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "B2" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "B1" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "B0" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "A3" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "A2" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "A1" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "A0" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "S3" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "S2" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "S1" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "S0" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state15" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state14" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state13" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state12" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state11" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state10" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state9" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state8" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state7" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state6" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state5" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state4" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state3" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state2" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state1" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "nx_state.state0" at input_generator_high_freq.vhd(49)
+Info (10041): Inferred latch for "reset" at input_generator_high_freq.vhd(52)
+Info (12128): Elaborating entity "4bitArithmeticCircuit" for hierarchy "4bitArithmeticCircuit:inst9"
+Info (12128): Elaborating entity "FAddr" for hierarchy "4bitArithmeticCircuit:inst9|FAddr:inst12"
+Info (12128): Elaborating entity "1bitArithmeticCircuit" for hierarchy "4bitArithmeticCircuit:inst9|1bitArithmeticCircuit:inst"
+Warning (275008): Primitive "NOT" of instance "inst5" not used
+Warning (275008): Primitive "NOT" of instance "inst6" not used
+Info (12128): Elaborating entity "FourOneMUX" for hierarchy "4bitArithmeticCircuit:inst9|1bitArithmeticCircuit:inst|FourOneMUX:inst"
+Info (12128): Elaborating entity "4bitLogicCircuit" for hierarchy "4bitLogicCircuit:inst1"
+Info (12128): Elaborating entity "1bitLogicCircuit" for hierarchy "4bitLogicCircuit:inst1|1bitLogicCircuit:inst"
 Warning (275008): Primitive "NOT" of instance "inst2" not used
 Warning (275008): Primitive "NOT" of instance "inst3" not used
-Info (12128): Elaborating entity "TwoOneMux" for hierarchy "1bitLogicCircuit:inst|TwoOneMux:inst21"
-Info (12128): Elaborating entity "FourOneMUX" for hierarchy "1bitLogicCircuit:inst|FourOneMUX:inst"
+Info (12128): Elaborating entity "state4bit" for hierarchy "state4bit:inst90"
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state3_780" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state4_768" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state5_756" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state6_744" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state7_732" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state8_720" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state9_708" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state10_696" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state11_684" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state12_672" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state13_660" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state14_648" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state15_636" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state0_816" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state1_804" is permanently enabled
+Warning (14026): LATCH primitive "input_generator_high_freq:inst17|nx_state.state2_792" is permanently enabled
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 37 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 12 input pins
-    Info (21059): Implemented 4 output pins
-    Info (21061): Implemented 21 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 3 warnings
-    Info: Peak virtual memory: 4586 megabytes
-    Info: Processing ended: Wed Nov 11 10:11:10 2026
-    Info: Elapsed time: 00:00:01
-    Info: Total CPU time (on all processors): 00:00:01
+Info (21057): Implemented 58 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 2 input pins
+    Info (21059): Implemented 8 output pins
+    Info (21061): Implemented 48 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 54 warnings
+    Info: Peak virtual memory: 4674 megabytes
+    Info: Processing ended: Wed Nov 11 12:40:14 2026
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:04
 
 

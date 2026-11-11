@@ -1,28 +1,21 @@
 |Lab3_top
 C3 <= 4bitRegister:inst13.Q3
-S3 => 4bitRegister:inst.P3
-S2 => 4bitRegister:inst.P2
-S1 => 4bitRegister:inst.P1
-S0 => 4bitRegister:inst.P0
-CLRN => 4bitRegister:inst.CLRN
-CLRN => 4bitRegister:inst2.CLRN
-CLRN => 4bitRegister:inst3.CLRN
-CLRN => 4bitRegister:inst13.CLRN
+CLK => input_generator_high_freq:inst17.clk
 CLK => 4bitRegister:inst.CLK
 CLK => 4bitRegister:inst2.CLK
 CLK => 4bitRegister:inst3.CLK
 CLK => 4bitRegister:inst13.CLK
-A3 => 4bitRegister:inst2.P3
-A2 => 4bitRegister:inst2.P2
-A1 => 4bitRegister:inst2.P1
-A0 => 4bitRegister:inst2.P0
-B3 => 4bitRegister:inst3.P3
-B2 => 4bitRegister:inst3.P2
-B1 => 4bitRegister:inst3.P1
-B0 => 4bitRegister:inst3.P0
+CLRN => 4bitRegister:inst.CLRN
+CLRN => 4bitRegister:inst2.CLRN
+CLRN => 4bitRegister:inst3.CLRN
+CLRN => 4bitRegister:inst13.CLRN
 C2 <= 4bitRegister:inst13.Q2
 C1 <= 4bitRegister:inst13.Q1
 C0 <= 4bitRegister:inst13.Q0
+N <= state4bit:inst90.N
+Z <= state4bit:inst90.Z
+V <= state4bit:inst90.V
+Cy <= state4bit:inst90.Cy
 
 
 |Lab3_top|4bitRegister:inst13
@@ -69,6 +62,38 @@ Q1 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
 P1 => inst2.DATAIN
 Q0 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
 P0 => inst3.DATAIN
+
+
+|Lab3_top|input_generator_high_freq:inst17
+clk => my_clk.CLK
+clk => count[0].CLK
+clk => count[1].CLK
+clk => count[2].CLK
+code0 => process_2~1.IN0
+code0 => process_2~5.IN0
+code0 => process_2~7.IN0
+code0 => process_2~3.IN0
+code1 => process_2~3.IN1
+code1 => process_2~5.IN1
+code1 => process_2~7.IN1
+code1 => process_2~1.IN1
+code2 => process_2~8.IN1
+code2 => process_2~6.IN1
+code2 => process_2~4.IN1
+code2 => process_2~2.IN1
+code2 => process_2~0.IN1
+S0 <= S0~4.DB_MAX_OUTPUT_PORT_TYPE
+S1 <= S1~4.DB_MAX_OUTPUT_PORT_TYPE
+S2 <= S2~4.DB_MAX_OUTPUT_PORT_TYPE
+S3 <= S3~4.DB_MAX_OUTPUT_PORT_TYPE
+A0 <= A0~2.DB_MAX_OUTPUT_PORT_TYPE
+A1 <= A1~3.DB_MAX_OUTPUT_PORT_TYPE
+A2 <= A2~1.DB_MAX_OUTPUT_PORT_TYPE
+A3 <= A3~0.DB_MAX_OUTPUT_PORT_TYPE
+B0 <= A2~1.DB_MAX_OUTPUT_PORT_TYPE
+B1 <= B1~3.DB_MAX_OUTPUT_PORT_TYPE
+B2 <= B2~2.DB_MAX_OUTPUT_PORT_TYPE
+B3 <= B3~2.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Lab3_top|4bitArithmeticCircuit:inst9
@@ -629,25 +654,25 @@ S0 => 1bitLogicCircuit:inst.S0
 S0 => 1bitLogicCircuit:inst10.S0
 S0 => 1bitLogicCircuit:inst3.S0
 S0 => 1bitLogicCircuit:inst4.S0
-A2 => 1bitLogicCircuit:inst.A_right
-A2 => 1bitLogicCircuit:inst10.A_left
-A2 => 1bitLogicCircuit:inst10.B
-A2 => 1bitLogicCircuit:inst3.A_right
-A1 => 1bitLogicCircuit:inst.A_left
-A1 => 1bitLogicCircuit:inst3.B
-B3 => 1bitLogicCircuit:inst.A
+A3 => 1bitLogicCircuit:inst.A_right
 A3 => 1bitLogicCircuit:inst.B
 A3 => 1bitLogicCircuit:inst10.A_right
+A2 => 1bitLogicCircuit:inst.A_left
+A2 => 1bitLogicCircuit:inst10.B
+A2 => 1bitLogicCircuit:inst3.A_right
+B3 => 1bitLogicCircuit:inst.A
 E => inst9.IN0
 CL2 <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+A1 => 1bitLogicCircuit:inst10.A_left
+A1 => 1bitLogicCircuit:inst3.B
+A1 => 1bitLogicCircuit:inst4.A_right
 B2 => 1bitLogicCircuit:inst10.A
 CL1 <= inst7.DB_MAX_OUTPUT_PORT_TYPE
-B0 => 1bitLogicCircuit:inst3.A_left
-B0 => 1bitLogicCircuit:inst4.A
+A0 => 1bitLogicCircuit:inst3.A_left
+A0 => 1bitLogicCircuit:inst4.B
 B1 => 1bitLogicCircuit:inst3.A
 CL0 <= inst8.DB_MAX_OUTPUT_PORT_TYPE
-A0 => 1bitLogicCircuit:inst4.A_right
-A0 => 1bitLogicCircuit:inst4.B
+B0 => 1bitLogicCircuit:inst4.A
 
 
 |Lab3_top|4bitLogicCircuit:inst1|1bitLogicCircuit:inst
@@ -908,5 +933,21 @@ D1 => inst5.IN0
 S => inst5.IN1
 S => inst1.IN0
 D0 => inst.IN0
+
+
+|Lab3_top|state4bit:inst90
+N <= C3.DB_MAX_OUTPUT_PORT_TYPE
+C3 => N.DATAIN
+C3 => result_or.IN0
+Z <= zero_not.DB_MAX_OUTPUT_PORT_TYPE
+C1 => result_or.IN1
+C0 => result_or.IN2
+C2 => result_or.IN3
+V <= overflow_gate.DB_MAX_OUTPUT_PORT_TYPE
+S3 => arithmetic_mode.IN0
+C_2 => carry_difference.IN0
+C_3 => carry_difference.IN1
+C_3 => carry_gate.IN1
+Cy <= carry_gate.DB_MAX_OUTPUT_PORT_TYPE
 
 
