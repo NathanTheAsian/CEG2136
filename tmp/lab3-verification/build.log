@@ -1,0 +1,67 @@
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Functional Simulation Netlist Generation
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Copyright (C) 1991-2013 Altera Corporation. All rights reserved.
+    Info: Your use of Altera Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Altera Program License 
+    Info: Subscription Agreement, Altera MegaCore Function License 
+    Info: Agreement, or other applicable license agreement, including, 
+    Info: without limitation, that your use is for the sole purpose of 
+    Info: programming logic devices manufactured by Altera and sold by 
+    Info: Altera or its authorized distributors.  Please refer to the 
+    Info: applicable agreement for further details.
+    Info: Processing started: Wed Nov 11 10:12:23 2026
+Info: Command: quartus_map --generate_functional_sim_netlist Check
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/arithmetic/1bitarithmeticcircuit.bdf
+    Info (12023): Found entity 1: 1bitArithmeticCircuit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/arithmetic/4bitarithmeticcircuit.bdf
+    Info (12023): Found entity 1: 4bitArithmeticCircuit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/arithmetic/faddr.bdf
+    Info (12023): Found entity 1: FAddr
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/arithmetic/fourbitadder.bdf
+    Info (12023): Found entity 1: FourBitAdder
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/logic/1bitlogiccircuit.bdf
+    Info (12023): Found entity 1: 1bitLogicCircuit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/logic/4bitlogiccircuit.bdf
+    Info (12023): Found entity 1: 4bitLogicCircuit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/tools/eightonemux.bdf
+    Info (12023): Found entity 1: EightOneMUX
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/tools/fouronemux.bdf
+    Info (12023): Found entity 1: FourOneMUX
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/tools/4bitregister.bdf
+    Info (12023): Found entity 1: 4bitRegister
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/tools/state4bit.bdf
+    Info (12023): Found entity 1: state4bit
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/tools/twoonemux.bdf
+    Info (12023): Found entity 1: TwoOneMux
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/tools/lab3_top.bdf
+    Info (12023): Found entity 1: Lab3_top
+Info (12021): Found 1 design units, including 1 entities, in source file /users/natha/ceg2136/tmp/lab3-verification/sources/waveforms/logiccircuit/onebitlogiccircuit/onebitpremux.bdf
+    Info (12023): Found entity 1: OneBitPreMux
+Info (12127): Elaborating entity "Lab3_top" for the top level hierarchy
+Warning (275008): Primitive "NOT" of instance "inst6" not used
+Warning (275008): Primitive "NOT" of instance "inst7" not used
+Warning (275008): Primitive "NOT" of instance "inst8" not used
+Info (12128): Elaborating entity "4bitRegister" for hierarchy "4bitRegister:inst13"
+Info (12128): Elaborating entity "TwoOneMux" for hierarchy "TwoOneMux:inst4"
+Info (12128): Elaborating entity "4bitArithmeticCircuit" for hierarchy "4bitArithmeticCircuit:inst9"
+Info (12128): Elaborating entity "FAddr" for hierarchy "4bitArithmeticCircuit:inst9|FAddr:inst12"
+Info (12128): Elaborating entity "1bitArithmeticCircuit" for hierarchy "4bitArithmeticCircuit:inst9|1bitArithmeticCircuit:inst"
+Warning (275008): Primitive "NOT" of instance "inst5" not used
+Warning (275008): Primitive "NOT" of instance "inst6" not used
+Info (12128): Elaborating entity "FourOneMUX" for hierarchy "4bitArithmeticCircuit:inst9|1bitArithmeticCircuit:inst|FourOneMUX:inst"
+Info (12128): Elaborating entity "4bitLogicCircuit" for hierarchy "4bitLogicCircuit:inst1"
+Info (12128): Elaborating entity "1bitLogicCircuit" for hierarchy "4bitLogicCircuit:inst1|1bitLogicCircuit:inst"
+Warning (275008): Primitive "NOT" of instance "inst2" not used
+Warning (275008): Primitive "NOT" of instance "inst3" not used
+Info (12128): Elaborating entity "state4bit" for hierarchy "state4bit:inst90"
+Info: Quartus II 64-Bit Functional Simulation Netlist Generation was successful. 0 errors, 8 warnings
+    Info: Peak virtual memory: 4565 megabytes
+    Info: Processing ended: Wed Nov 11 10:12:24 2026
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00

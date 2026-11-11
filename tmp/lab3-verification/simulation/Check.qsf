@@ -1,0 +1,17 @@
+set_global_assignment -name FAMILY "Cyclone III"
+set_global_assignment -name DEVICE AUTO
+set_global_assignment -name TOP_LEVEL_ENTITY Lab3_top
+set_global_assignment -name SIMULATION_MODE FUNCTIONAL
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Arithmetic/1bitArithmeticCircuit.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Arithmetic/4bitArithmeticCircuit.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Arithmetic/FAddr.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Arithmetic/FourBitAdder.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Logic/1bitLogicCircuit.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Logic/4bitLogicCircuit.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Tools/EightOneMUX.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Tools/FourOneMUX.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Tools/4bitRegister.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Tools/state4bit.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Tools/TwoOneMux.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Tools/Lab3_top.bdf"
+set_global_assignment -name BDF_FILE "C:/Users/natha/CEG2136/tmp/lab3-verification/sources/Waveforms/LogicCircuit/OneBitLogicCircuit/OneBitPreMux.bdf"

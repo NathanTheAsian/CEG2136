@@ -1,0 +1,15 @@
+{
+  "Arithmetic/1bitArithmeticCircuit.bdf": "650828789b67c4cae0d12223f8ecbbccd5589c76726556c4bf2576a594747e23",
+  "Arithmetic/4bitArithmeticCircuit.bdf": "23c9209cbc31b84dba60c7bdad7490c2b028eaa40274a1470a69d05589aa8292",
+  "Arithmetic/FAddr.bdf": "58755607b7b8e959480e4b7cb27c639f8a0799215e99ac5841aa8de6f7079168",
+  "Arithmetic/FourBitAdder.bdf": "640d14ef32fb8c167bcd1c0073b0e379d9f73aef991676717adc883d65148a0d",
+  "Logic/1bitLogicCircuit.bdf": "6689bfd3ae7f71678b99910e87f02418570e5a07250a6993aba136dc86127f4d",
+  "Logic/4bitLogicCircuit.bdf": "57df2c633bca66fbc4e14f2366f7993a0e7f80959991a813f9aea8b28ef69079",
+  "Tools/EightOneMUX.bdf": "c18a819c36ddee3e388aa7b460f0efc00ef5fa162a0655d3e72155acc12efa41",
+  "Tools/FourOneMUX.bdf": "6cfd702d34726a2ceadce625e57c80ac2fda80be34f56f4e7fc9a1e022f81e1f",
+  "Tools/4bitRegister.bdf": "9942998a9580b63eea35bdda5d55b17d14f4c3a92613f5036cdd3b58192c347e",
+  "Tools/state4bit.bdf": "0d887b890161b17fe72ad3dea2ae34f78210483b86ceb2f75562074da367b097",
+  "Tools/TwoOneMux.bdf": "4ccaac0159ce1eb9e613d39f1859e0cfa946cfd4174aa22885e145f7f4cf78a2",
+  "Tools/Lab3_top.bdf": "bfa5061e1e19a4eebb54ac58e4c2927dd7515f43c674742316266b4737ab6db9",
+  "Waveforms/LogicCircuit/OneBitLogicCircuit/OneBitPreMux.bdf": "067593c80cbadd7ba0f9fa3e91f1402b4752990f5b335cbcbb7d83eacbdeb169"
+}
