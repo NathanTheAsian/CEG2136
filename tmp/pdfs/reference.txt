@@ -1,0 +1,1074 @@
+       CEG 2136: Computer Architecture I
+
+   Laboratory 4: Design and Simulation of Control Unit (CU)
+
+1 Objective
+
+This laboratory requires students to design and simulate a hardwired Control Unit for a
+basic Central Processing Unit (CPU). Students will complete the following tasks:
+
+    · Understand the instruction cycle process (Display, Fetch, and Execute).
+    · Derive Boolean logic equations for memory, register, ALU, and bus multiplexer con-
+
+       trol based on RTL requirements.
+    · Implement the Control Unit as a combinational logic circuit.
+    · Verify the correct hardware execution of a machine-code program (calculating the
+
+       Fibonacci sequence) using a provided checker.
+    · Download and run the design on the Altera DE2-115 board to experimentally verify
+
+       the circuit.
+
+CPU Architecture Features
+
+    · A Reduced Instruction Set (RISC) architecture.
+    · An Accumulator-based datapath.
+    · A Hardwired Control Unit (utilizing a one-hot encoded state sequence).
+    · An 8-bit memory and data structure (256 × 8 memory capacity).
+
+                                                         1
+Textbook: Computer System Architecture, Morris Mano, 3rd Ed.
+Recommended Reading: Chapter 5 (Basic Computer Organization and Design)
+
+2 Introduction
+
+This final laboratory introduces the design and simulation of a Central Processing Unit
+(CPU) based on a Reduced Instruction Set Computer (RISC) architecture. Specifically,
+students will design a hardwired Control Unit (CU) capable of executing a full instruction
+set. While the fundamental structure parallels the BASIC computer architecture pre-
+sented in the textbook [3], this implementation introduces some modifications to memory
+formatting and instruction fetching that alter the control sequence.
+
+                                                         2
+                                   Figure 1: Computer block diagram.
+
+Notes:
+    · Bus Multiplexer Typo: The multiplexer inputs in the diagram are labeled out
+       of order (0, 1, 2, 4, 3, 5, 6). You must account for this exact numbering when
+       deriving your BusSel equations.
+    · Register Write Access: The main bus does not write to every register. While
+       the AR, DR, IR, PC, and OUTD registers receive data directly from the bus, the AC
+       (Accumulator) is written to only by the ALU, and OUTA is written to only by the
+       external DIP switches.
+                                                         3
+2.1 Functional Specification
+
+2.1.1 Memory Architecture and Instruction Length
+The primary deviation from the textbook architecture is the memory organization. The
+textbook uses a 4096×16 memory, allowing a complete 16-bit memory-reference instruction
+(4-bit opcode combined with a 12-bit address) to fit entirely within a single location [3].
+
+    In contrast, this laboratory utilizes a 256 × 8 memory. Because a memory-reference
+instruction remains 16 bits long, it must be stored across two consecutive 8-bit locations:
+
+    · Byte 1: The instruction opcode.
+    · Byte 2: The operand address (8 bits fully address the 256-word space).
+Consequently, fetching a memory-reference instruction requires two consecutive READ
+cycles: one to retrieve the opcode into the Instruction Register (IR), and another to
+retrieve the address into the Address Register (AR).
+
+2.1.2 The Instruction Cycle
+The sequence counter (SC) behaves as a finite state machine, driving a decoder that gen-
+erates distinct timing signals (T0 . . . T12). A full cycle of Display  Fetch  Execute
+processes exactly one instruction, provided the Stop Register remains low. The system
+repeatedly executes this three-phase sequence:
+
+   1. Display: This phase operates continuously to allow real-time observation. The
+       memory address defined by the external DIP switches is loaded from the OUTA register
+       into the Address Register (AR), and the corresponding memory content is routed to
+       the OUTD register for output to a 7-segment display.
+
+   2. Fetch: The CPU prepares for execution. Because memory is 8-bit, the Program
+       Counter (PC) guides multiple read steps. The CPU first fetches the opcode and
+       evaluates IR[7]. If it is a register-reference instruction, the fetching phase concludes.
+       If it is a memory-reference instruction, the PC increments, and the CPU initiates a
+       second read cycle.
+          · In direct addressing, this second byte holds the operand address, which is
+             directly read and loaded into the AR.
+                                                         4
+          · In indirect addressing, this second byte holds a pointer to a memory location
+             that contains the actual operand address, requiring a third read cycle to retrieve
+             and load the final address into the AR.
+
+       Once the AR holds the final target address, the CPU is ready for execution.
+   3. Execute: The CPU performs the specific micro-operations designated by the X and
+
+       Y signals alongside the T timing states. Once execution concludes, the sequence
+       counter (SC) is reset to 0, signaling the start of the next full instruction cycle.
+Notes:
+    · Memory Initialization: The processor memory is initialized using a file called
+       memorycontents8.mif. This file defines the memory size, width, and the initial
+       machine code instructions required for the laboratory.
+    · System Halt: If the Stop Register is set to 1, it halts the incrementation of the PC
+       and stops program execution. However, the Display logic will continue to function.
+
+2.1.3 Timing and Synchronization
+Many Instruction Decoder outputs are Mealy-type signals, meaning they depend on both
+the current state (T signals) and inputs (IR and DR contents) [3]. Asynchronous input
+transitions during a clock cycle can cause transient logic glitches. Therefore, directly
+routing these unbuffered outputs to the datapath would result in errors. To resolve this, a
+Control Register buffers the outputs, ensuring the commands are strictly synchronized to
+the clock edge and stable for a full clock period before reaching the CPU components.
+
+2.1.4 Instruction Format and Decoding
+The control unit must interpret the bits stored in the Instruction Register (IR) to determine
+the necessary micro-operations.
+
+    · Instruction Type (IR[7]): Distinguishes between memory-reference instructions
+       (IR[7] = 0), which interact with memory and require 16 bits, and register-reference
+       instructions (IR[7] = 1), which act directly on CPU registers and only require 8
+       bits.
+
+                                                         5
+· Addressing Mode (IR[6]): For memory-reference instructions, this bit determines
+  if the address provided is direct (IR[6] = 0) or indirect (IR[6] = 1), where the
+  fetched operand address serves as a pointer to the actual data location.
+
+                     Table 1: CPU Instruction Set
+
+  Type of            Binary/hex opcodes
+Instruction
+             Symbol  Direct Addressing Indirect Addressing  Description
+  Memory
+  Reference    LDD   I = IR6 = 0       I = IR6 = 1          Load AC directly from instruc-
+  (IR7=0)                                                   tion
+               AND   00000000=0x00 01000000=0x40            AND AC to memory word
+  Register     ADD                                          Add AC to memory word
+  Reference    SUB   00000001=0x01     01000001=0x41        Subtract a memory word from
+  (IR7=1)            00000010=0x02     01000010=0x42        AC
+               LDA   00000011=0x03     01000011=0x43        Load AC from a memory word
+               STA                                          Store AC to a memory word
+               BUN   00000100=0x04     01000100=0x44        Branch unconditionally
+                ISZ  00001000=0x08     01001000=0x48        Increment memory word and skip
+                     00010000=0x10     01010000=0x50        the following instruction if the re-
+               CLA   00100000=0x20     01100000=0x60        sult is zero
+               CMA                                          Clear AC
+               ASL   10000001=0x81                          Complement AC
+               ASR   10000010=0x82                          Arithmetic shift left AC
+               INC   10000100=0x84                          Arithmetic shift right AC
+               HLT   10001000=0x88                          Increment AC
+                     10010000=0x90                          Halt
+                     10100000=0xA0
+
+    Table 2 summarizes the structural differences and the corresponding memory read re-
+quirements for each instruction type.
+
+                                    6
+             Table 2: Instruction Length and Memory Read Requirements
+
+Instruction Type IR[7]           Length     # of Reads Description
+
+Register Reference     1  8 bits (1 byte)   1       Fetches the opcode only.
+
+Memory Reference       0 16 bits (2 bytes)  2*      Fetches the opcode, then the
+
+                                                    address.
+
+Direct Load (LDD) 0 16 bits (2 bytes)       2       Fetches opcode, then immedi-
+
+                                                    ate value to AC.
+
+*In indirect addressing (IR[6]=1), the target is a pointer, requiring an extra read for the final address.
+
+    To simplify the control logic, the instruction decoder translates these bits into distinct
+control signals:
+
+    · X0, X1, X2: Identify the broad instruction class (Direct Memory, Indirect Memory, or
+       Register Reference). Table 3 defines these signals and their associated timing states.
+
+    · Y0 . . . Y7: Decode the specific memory-reference operations. As shown in Table 4,
+       AND, ADD, and SUB utilize partial binary encoding, while LDA, STA, BUN, and
+       ISZ utilize one-hot encoding.
+
+                    Table 3: Instruction Control Signals (X0, X1, X2)
+
+Instruction         IR[7] IR[6]  Signal     Timing Signals Description
+Type
+
+Direct Memory       0     0 X0 = IR7 IR6        T3, T6, T8  Operand address is
+
+                                                            given directly.
+
+Indirect Memory 0         1 X1 = IR7 IR6 T3, T6, T7, T8 Uses a pointer to the
+
+                                                            operand address.
+
+Register Refer- 1         0 X2 = IR7 IR6        T3          Operation acts directly
+ence
+                                                            on CPU registers.
+
+    As shown in Table 3, we can determine the specific timing states required for memory
+access across the entire instruction cycle (fetch and execute):
+
+    · Register-Reference Instructions require 1 timing state: Fetch the opcode at
+       T3.
+                                                         7
+· Direct Memory-Reference Instructions require 3 timing states: Fetch the
+  opcode (T3), fetch the operand address (T6), and read the operand data for execution
+  (T8).
+
+· Indirect Memory-Reference Instructions require 4 timing states: Fetch the
+  opcode (T3), fetch the pointer address (T6), read the effective address (T7), and read
+  the operand data for execution (T8).
+
+     Table 4: Memory-Reference Instruction Control Signals (Y0 . . . Y7)
+
+Instruction Signal Logic Expression Description
+
+AND  Y0  IR7 IR1 IR0     Logical AND to memory word.
+ADD
+SUB  Y1  IR7 IR1 IR0     Add AC to memory word.
+LDA
+STA  Y2  IR7 IR1 IR0     Subtract a memory word from AC.
+BUN
+ISZ  Y3  IR7 IR2         Load AC from a memory word.
+LDD
+     Y4  IR7 IR3         Store AC to a memory word.
+
+     Y5  IR7 IR4         Branch unconditionally.
+
+     Y6  IR7 IR5         Increment memory word and skip if zero.
+
+     Y7 IR3 + IR4 + IR5) (IR0 + IR1 + IR2 + Load AC directly from instruction (im-
+                                           mediate).
+
+                      8
+                   Table 5: Instruction Fetch Cycle
+
+State Description                                                      RTL Notation
+
+T0  Load the address register AR with contents of register OutA T0: AR  OutA
+
+T1  Read the memory location of address in AR, store the value in T1: OutD  M[AR]
+
+    OutD
+
+T2  - Load AR register with content of program counter register T2: AR  PC
+
+    PC                                                                 T2S: PC  PC+1
+
+    - Increment PC if program is still running, i.e., stop bit S is
+
+    zero. PC now points to either:
+
+        - the next instruction, if the current instruction is only 8b
+
+        - the second byte of the current instruction, if it's a 16b
+
+T3  Read instruction's opcode                                          T3: IR  M[AR]
+
+T4  This state is a delay that allows the opcode to be decoded by (nothing)
+
+    CU and stored in X and Y registers
+
+T5  If X2, the byte in IR is a register reference instruction          T5X2: execute instruction -
+                                                                       Table 6
+        - execute the instruction according to Table 6                 T5X2: SC  0
+
+        - Reset sequence counter SC
+
+    If X0 or X1, the byte in IR is a memory reference instruction.     T5IR7 : AR  PC
+    Read the second byte of the instruction:                           T5IR7 S: PC  PC+1
+
+        - Firstly, move the address from PC to AR.
+        - Increment PC if program is still running (S = 0). PC now
+    points to the opcode of the next instruction.
+
+T6  Read the second byte of the instruction from memory location T6IR7 : AR  M[AR]
+
+    at address AR, M[AR], and move the value to AR
+
+T7  If direct load instruction, LDD, move AR to DR and reset SC T7Y7: DR  AR
+
+    If indirect addressing mode, and not LDD command, read the T7X1: AR  M[AR]
+    operand address from M[AR]
+
+    If direct addressing mode, and not LDD command, do nothing, T7X0: nothing
+    to align with indirect addressing mode.
+
+T8  If direct load instruction, LDD, move DR to AC and reset SC T8Y7: AC  DR
+
+                                                                       T8Y7: SC  0
+
+T8 - T12 Execute the memory reference instruction according to Table (see Table 7)
+              7
+
+Note: This entire three-phase cycle repeats continuously as long as the Stop Register (S) remains 0.
+
+                                        9
+        Table 6: Instruction Execution Cycle - Register Reference
+
+        Instruction Symbol RTL Notation
+
+        CLA                    T5 X2 IR0: AC  0
+        CMA                    T5 X2 IR1: AC  AC
+        ASL                    T5 X2 IR2: AC  ashl AC
+        ASR                    T5 X2 IR3: AC  ashr AC
+        INC                    T5 X2 IR4: AC  AC + 1
+        HLT                    T5 X2 IR5: S  1
+
+        Note: X2 designates a register-reference instruction. IR0 . . . IR5 provide one-
+        hot encoding for the specific operation, which executes entirely within state T5.
+
+     Table 7: Instruction Execution Cycle - Memory-Reference Instructions
+
+Symbol                         RTL Notation
+
+AND                            T8Y0: DR  M[AR]
+                               T9Y0: AC  AC  DR, SC  0
+
+ADD                            T8Y1: DR  M[AR]
+                               T9Y1: AC  AC + DR, SC  0
+
+SUB                            T8Y2: DR  M[AR]
+                               T9Y2: AC  AC - DR, SC  0
+
+LDA                            T8Y3: DR  M[AR]
+                               T9Y3: AC  DR, SC  0
+
+STA                            T8: (cycle not allocated to allow the address bus to stabilize)
+
+                               T9Y4: M[AR]  AC, SC  0
+
+BUN                            T8Y5: PC  AR, SC  0
+
+ISZ                            T8Y6: DR  M[AR]
+(assuming that the next        T9Y6: DR  DR + 1
+instruction is a memory-       T10Y6: M[AR]  DR
+reference instruction, stored  T11Y6: if (DR = 0) then (S: PC  PC + 1)
+2 memory locations further     T12Y6: if (DR = 0) then (S: PC  PC + 1); SC  0
+down)
+
+Note: Y0 . . . Y6 decode the specific memory-reference operations, and the execution phase
+occurs across timing states T8 through T12.
+
+                               10
+          Table 8: ALU Operations Table
+
+S2 S1 S0  Operation    Description
+
+0 0 0 AC  AC + DR Addition
+0 0 1 AC  AC + DR + 1 Subtraction: AC - DR
+010       AC  ashl AC  AC arithmetic left shift
+011       AC  ashr AC AC arithmetic right shift
+1 0 0 AC  AC  DR Logic AND
+1 0 1 AC  AC  DR Logic OR
+110       AC  DR       DR transfer to AC
+111       AC  AC       Complement AC
+
+2.1.5 Instruction Execution Trace Example: ADD 0x80
+
+To clarify how the Fetch and Execute cycles described in the previous tables interact, let
+us trace a concrete example. Suppose the CPU is executing a direct memory-reference ADD
+instruction, which adds the contents of memory address 0x80 to the Accumulator.
+
+    · Memory Location 0x00: Contains 0x02 (The opcode for Direct ADD).
+    · Memory Location 0x01: Contains 0x80 (The operand address).
+    · Memory Location 0x80: Contains 0x05 (The actual data value to be added).
+    · The Program Counter (PC) is initially at 00, and the Display switches (OUTA) are
+
+       set to FF.
+
+          11
+Table 9: Execution Trace for ADD 0x80
+
+State PC AR IR DR AC Signal Micro-operation details
+
+T0 00 FF - - 00 Display AR  OUTA. (AR gets display ad-
+                                                                  dress).
+
+T1 00 FF - - 00 Display OUTD  M[AR].
+
+T2 01 00 - - 00 T2S AR  PC (00), then PC increments
+
+                      to 01.
+
+T3 01 00 02 - 00  T3  IR  M[00]. IR holds opcode 0x02.
+
+T4 01 00 02 - 00 None Decode delay. CU determines X0 =
+
+                                                                  1, Y1 = 1.
+T5 02 01 02 - 00 T5IR7S AR  PC (01), then PC increments
+
+                      to 02.
+
+T6 02 80 02 - 00 T6IR7 AR  M[01]. AR holds operand ad-
+
+                      dress 0x80.
+
+T7 02 80 02 - 00 T7X0 Nothing happens (since direct ad-
+
+                      dressing).
+
+T8 02 80 02 05 00 T8Y1 DR  M[80]. DR fetches the data
+                                                                  (0x05).
+
+T9 02 80 02 05 05 T9Y1 AC  AC + DR. SC  0 (reset for
+                                                                  next cycle).
+
+2.2 Relevance to Computer Architecture
+
+In a CPU with multiple registers, creating individual paths between every register and
+memory would require an excessive number of wires [3]. A more efficient scheme for
+transferring information is to use a Common Bus System [3].
+
+    While a single shared bus greatly reduces physical wiring complexity, it introduces two
+strict physical constraints that dictate how instructions must be executed:
+
+   1. The bus can only select one source at a time, transferring data to the designated
+       destination register during the clock pulse transition [3]. Thus, memory can perform
+       only one access (read or write) per clock cycle.
+
+   2. Any register can receive data from the bus except the Accumulator (AC) [3]. The
+       inputs of the AC come strictly from the adder and logic circuit (ALU) [3].
+
+To accommodate these constraints, data cannot move directly to the AC and must instead
+be routed through specific intermediate registers.
+
+                                                        12
+2.2.1 The Hierarchy of Registers
+Each register in the datapath serves a distinct, non-interchangeable purpose, ensuring the
+Control Unit (CU) and ALU receive stable inputs during the correct clock cycle:
+
+    · Program Counter (PC): The PC acts as an instruction pointer. It holds the
+       memory address of the next byte to be fetched; it does not store actual instructions
+       or data.
+
+    · Address Register (AR): The memory address input is connected strictly to the
+       AR. Therefore, the AR must always be used to specify a memory address [3].
+
+    · Instruction Register (IR): Once an opcode is fetched, it is stored in the IR. This
+       allows the CU to continuously decode the instruction (X and Y signals) while the
+       rest of the datapath is available to fetch subsequent addresses or data.
+
+    · Data Register (DR): Because the AC cannot read directly from the bus, the DR
+       acts as a buffer. Data fetched from memory is held in the DR. The inputs from the
+       DR and AC are then used for arithmetic and logic micro-operations, and the result
+       is transferred back into the AC [3].
+
+2.2.2 Translating Assembly
+To understand how this hierarchy works in practice, consider the execution of a simple
+assembly command: ADD 0x80 (Add the contents of memory address 0x80 to the Accu-
+mulator).
+
+   1. Instruction Fetch: The CPU moves the current PC value to the AR (AR  PC)
+       to point to the instruction in memory.
+
+   2. Opcode Decode: Memory outputs the opcode, which is loaded into the IR (IR 
+       M[AR]). The CU decodes this as an ADD command.
+
+   3. Operand Address Fetch: The PC increments to point to the next byte (PC  PC
+       + 1). This new address is moved to the AR (AR  PC) to fetch the target location.
+       Memory outputs 0x80, which is immediately loaded back into the AR since this is
+       direct addressing (AR  M[AR]).
+
+   4. Data Fetch: With the AR now pointing to 0x80, memory outputs the actual nu-
+       merical operand. This operand is loaded into the DR buffer (DR  M[AR]).
+                                                        13
+5. Execution: The ALU now has both required operands. It adds the value in the DR
+   to the current value of the AC, and writes the sum back into the AC (AC  AC +
+   DR).
+
+3 Pre-Lab
+
+Complete the following designs before beginning the software implementation. Include all
+diagrams, tables, and equations in your final laboratory report.
+
+3.1 The Control Signals
+
+Your primary objective in this lab is to design the combinational logic for the Control Unit.
+To do this, you must derive the equations for the following 19 control signals, categorized
+by the hardware they control:
+
+Memory (M (In, T ))        CPU ALU (ALU (In, T ))
+    1. memwrite               12. ALU_Sel2
+                              13. ALU_Sel1
+CPU Registers (R(In, T ))     14. ALU_Sel0
+    2. AR_Load
+    3. PC_Load             Bus (Data Mux) (Bus(In, T ))
+    4. PC_Inc                 15. BusSel2
+    5. DR_Load                16. BusSel1
+    6. DR_Inc                 17. BusSel0
+    7. IR_Load
+    8. AC_Clear            Control Unit ((In, T ))
+    9. AC_Load                18. SC_Clear
+   10. AC_Inc                 19. Halt
+   11. OUTD_Load
+
+    Make sure to first implement the instruction decoding signals (X0 . . . X2 and Y0 . . . Y7)
+defined in the previous section, to allow for deriving all the above controls signals from
+them.
+
+                           14
+3.2 Deriving the Equations
+
+To find the Boolean expression for any control signal, analyze the RTL tables (Tables 5, 6,
+and 7) to identify all conditions that trigger it. Because a specific action (like loading a reg-
+ister) may occur during multiple, distinct instructions or timing states, you must combine
+these independent conditions using logical OR operations to form your final equations.
+
+    · Memory and CPU Registers (_Load, _Inc, _Clear): Differentiate between load
+       operations, increments, and clears within the RTL. Ensure your _Load equations do
+       not inadvertently trigger during an increment or clear cycle.
+
+    · ALU Selects (ALU_Sel[2:0]): Map each ALU operation to its required select line
+       states using Table 8.
+
+    · Bus Selects (BusSel[2:0]): Identify which RTL operations require data transfer
+       via the main bus. Your equations must drive the BusSel lines to select the appro-
+       priate source register on the multiplexer (refer to the notes under Figure 1).
+
+    · Control Unit Signals (SC_Clear, Halt): Identify the specific RTL states that
+       dictate sequence counter resets or system halts.
+
+4 Laboratory
+
+A complete project containing the CPU datapath shown in Figure 1 is provided to you.
+The lab4_controller.bdf schematic file currently contains only the input and output
+pins, with no internal logic. Your task is to implement the control logic within this file.
+
+4.1 Using Bus Connections
+
+To minimize routing errors and reduce visual clutter, students are strongly encouraged to
+use bus connections similar to the previous lab. Please refer to the Appendix A.4 for more
+detailed instructions.
+
+4.2 Project Setup
+
+   1. Download the provided lab support files from Brightspace.
+                                                        15
+   2. Extract them to your H: network drive.
+   3. Launch Quartus II and open the provided Quartus Project File (.qpf).
+   4. Configure the target device as follows:
+
+          · Device Family: Cyclone IV E
+          · Device: EP4CE115F29C7
+   5. Ensure Quartus recognizes the project hierarchy by adding all provided source files
+       (.bdf, .bsf, .vhd, .v) to the project via Project > Add/Remove Files in
+       Project.
+
+4.3 Schematic Design: Lab Controller
+
+   1. Open the lab4_controller.bdf file.
+   2. Implement the combinational logic for the instruction classification signals (X0, X1, X2)
+
+       and the operation decoding signals (Y0 . . . Y7).
+   3. Implement the Boolean expressions for the 19 datapath control signals based on your
+
+       pre-lab.
+   4. Save the file.
+
+4.4 Schematic Design: Top-Level Entity
+
+   1. Open the top-level schematic file for the CPU.
+   2. Compile the project and verify it completes with zero errors.
+
+5 Test Program: Fibonacci Sequence
+
+To verify your Control Unit design, we will use a test program that calculates the first few
+elements of the Fibonacci sequence. The first two elements are 1 and 1, and subsequent
+elements are the sum of the previous two (yielding 1, 1, 2, 3, 5, 8, 13).
+
+                                                        16
+#include <stdint.h>
+
+uint8_t a = 1;  // Output array starting at memory address 0xF8
+uint8_t b = 1;
+uint8_t c;
+int8_t cnt;
+uint8_t* indx;
+uint8_t F[8];
+
+// Initialize first two elements
+indx = &F[0];
+*indx = a;
+
+indx = &F[1];
+*indx = b;
+
+indx = &F[2]; // Set pointer to the 3rd element
+
+// Calculate the next 5 elements
+
+for (cnt = -5; cnt != 0; cnt++) {
+
+   c = a + b;
+
+   *indx = c; // Store in the array via pointer
+
+   indx ++;     // Increment array pointer
+
+   a = b;       // Shift values for next iteration
+
+   b = c;
+
+}
+
+5.1 Variable Memory Map
+
+We will place our variables at the very end of our 256-byte memory space to keep them
+separated from our program code. All addresses and values below are in Hexadecimal.
+
+   · a: 0xF0                           · cnt: 0xF4
+   · b: 0xF1                           · indx: 0xF5
+   · c: 0xF2                           · F[]: 0xF8 through 0xFF
+
+                                   17
+5.2 Machine Code Translation
+
+The assembly code and its corresponding machine code translation are shown below.
+
+Addr (Hex)             Table 10: Fibonacci Assembly Program
+
+       00   Opcode Operand Instruction Comment / RTL
+       02
+       04   00  01  LDD 01 AC  1
+
+       06   08  F0  STA F0 a  1
+       08
+            08  F1  STA F1 b  1
+       0A
+       0C   00  FB  LDD FB AC  -5 (Loop counter)
+
+       0E   08  F4  STA F4 cnt  -5
+       10
+            00  F8  LDD F8 AC  &F[0]
+       12
+       14   08  F5  STA F5 indx  &F[0]
+
+       16   04  F0  LDA F0 AC  a
+       18
+            48  F5  STA.I F5 F[0]  a
+       1A
+       1C   00  F9  LDD F9 AC  &F[1]
+
+       1E   08  F5  STA F5 indx  &F[1]
+       20
+       22   04  F1  LDA F1 AC  b
+       24
+            48  F5  STA.I F5 F[1]  b
+       26
+       28   00  FA  LDD FA AC  &F[2]
+       29
+            08  F5  STA F5 indx  &F[2]
+       2B
+       2D   04  F0  LDA F0 AC  a [LOOP START]
+
+       2F   02  F1  ADD F1 AC  a + b
+       31
+            08  F2  STA F2 c  a + b
+       33
+       35   48  F5  STA.I F5 F[indx]  c
+       37
+            04  F5  LDA F5 AC  indx
+
+            90  -   INC  AC++ (Note: 1-byte instruction)
+
+            08  F5  STA F5 indx++
+
+            04  F1  LDA F1 AC  b
+
+            08  F0  STA F0 a  b
+
+            04  F2  LDA F2 AC  c
+
+            08  F1  STA F1 b  c
+
+            20  F4  ISZ F4 cnt++ (Skip next instruction if AC is 0)
+
+            10  1E  BUN 1E Branch Unconditionally back to Loop Start
+
+            A0  -   HLT  Halt execution
+
+                    18
+Notes:
+    · Variable Instruction Lengths: Memory-reference and immediate-load instruc-
+       tions require 2 bytes (one for the opcode, one for the operand), whereas register-
+       reference instructions (e.g., INC, HLT) require only 1 byte.
+    · Code Translation: Although the memory initialization file (.mif) for this program
+       is provided, you are encouraged to translate the high-level logic into assembly on
+       your own first. Note that there are multiple valid ways to implement this algorithm.
+
+6 Simulation and Verification
+
+   1. Open the provided waveform file (Test1.vwf).
+   2. Assign a clock signal with a 2.5 ns period to the clock input.
+   3. Verify that the Quartus II Simulator is selected in the simulation settings.
+   4. Run a functional simulation.
+   5. Confirm that your Control Unit successfully executes the Fibonacci sequence pro-
+
+       gram by verifying that all checker signals trigger correctly and match the expected
+       waveform shown in Figure 2.
+
+                                                        19
+                       Figure 2: Expected simulation output for verification
+
+7 Demonstration
+
+This section allows students to verify the CPU design on the DE2-115 hardware test board.
+You will modify your test program to use an endless loop instead of halting, run it on the
+FPGA, and use the DIP switches to observe the values stored in memory (i.e., the Fibonacci
+sequence).
+
+7.1 Pin Assignment
+
+   1. Select Assignments > Assignment Editor.
+   2. Use the Node Finder to import all the input, output, and control signals into the
+
+       editor.
+   3. Assign physical locations to each signal according to Table 11.
+   4. Save the assignments and recompile the project.
+
+                                                        20
+                  Table 11: Device Pin Connections for DE2-115 Board
+
+Signal            Component Pin Location Signal Component             Pin Location
+                                                                         PIN_Y23
+                           Clock and Control Signals                     PIN_F17
+                                                                        PIN_AB27
+         clk      50MHz clock  PIN_Y2    Auto          SW[17]           PIN_AC26
+step_instruction     KEY[0]    PIN_M23   Stop         LEDG[8]           PIN_AD26
+                                                                        PIN_AB26
+                  Address Input (DIP Switches)                           PIN_G18
+                                                                         PIN_F22
+DIP 0             SW[0]        PIN_AB28  DIP 4        SW[4]              PIN_E17
+DIP 1             SW[1]        PIN_AC28  DIP 5        SW[5]              PIN_L26
+DIP 2             SW[2]        PIN_AC27  DIP 6        SW[6]              PIN_L25
+DIP 3             SW[3]        PIN_AD27  DIP 7        SW[7]              PIN_J22
+                                                                         PIN_H22
+                  Data Output (7-Segment Displays)
+
+A1                HEX1[0]      PIN_M24   A2           HEX0[0]
+
+B1                HEX1[1]      PIN_Y22   B2           HEX0[1]
+
+C1                HEX1[2]      PIN_W21   C2           HEX0[2]
+
+D1                HEX1[3]      PIN_W22   D2           HEX0[3]
+
+E1                HEX1[4]      PIN_W25   E2           HEX0[4]
+
+F1                HEX1[5]      PIN_U23   F2           HEX0[5]
+
+G1                HEX1[6]      PIN_U24   G2           HEX0[6]
+
+7.2 FPGA Programming and Verification
+
+   1. Modify your program in memorycontents8.mif so that it ends with an endless loop
+       (e.g., CLA followed by BUN pointing to itself) instead of ending with the HLT instruc-
+       tion. This ensures the CPU continues running while you inspect memory.
+
+   2. Connect the USB-Blaster cable between the PC and the FPGA board.
+   3. Set the RUN/PROG switch to RUN.
+   4. Open the programmer: select Tools > Programmer.
+   5. Verify that the USB-Blaster is selected in Hardware Setup.
+
+          · If the USB-Blaster does not appear in the list of available hardware, close and
+             reopen the window.
+
+          · You may need to unplug and replug the cable or power-cycle the board.
+
+                                                        21
+   6. Ensure your compiled .sof output file is loaded.
+   7. Check the Program/Configure box and click Start.
+   8. Toggle SW17 and use the board's DIP switches (SW[7:0]) to select specific memory
+
+       addresses to display.
+   9. Verify that the contents of your output array match the expected Fibonacci values.
+
+       The expected Address  Data are as follows:
+          · 0xF8  0x01
+          · 0xF9  0x01
+          · 0xFA  0x02
+          · 0xFB  0x03
+          · 0xFC  0x05
+          · 0xFD  0x08
+          · 0xFE  0x0D
+
+  10. Demonstrate the working design to a Teaching Assistant for verification.
+
+8 Lab Completion
+
+There is no formal lab report or code submission required. Instead, before leaving the lab,
+you must:
+
+    · Demonstrate your functional design to the TA.
+    · Answer questions from the TA to assess your individual understanding of the lab
+
+       concepts.
+    · Back up your project files to your University OneDrive.
+
+                                                        22
+A Appendix I: Best Practices and Troubleshooting
+
+Use the following references and techniques to guide your laboratory work.
+
+A.1 Project Organization
+
+Always create dedicated folders for each Quartus project. Because laboratory computers
+erase local files when powered off, you must save and back up your project folders using
+your University OneDrive to prevent data loss.
+
+A.2 Debugging Connections
+
+To verify signal connectivity in the schematic editor, double-click a wire segment. Quartus
+highlights the entire connected net, as shown in Figure 3, allowing you to confirm that an
+input is connected to its intended destination.
+
+   Figure 3: Quartus highlighting a connected net upon double-clicking a wire segment.
+                                                        23
+A.3 Naming Wires
+
+Name wires to make Quartus recognize connections without drawing the entire physical
+path [1], as shown in Figure 4.
+
+           Figure 4: Named wires create logical connections without physical lines.
+
+A.4 Using Bus Connections
+
+Replace multiple individual wires with bus connections to simplify complex schematic
+designs. Buses reduce visual clutter and lower the probability of wiring errors when routing
+multiple inputs and outputs. This practice becomes critical as circuit designs grow.
+
+    A bus carries multiple data bits. A bus of three signals utilizes the naming format
+X[2..0] (count down). In Quartus, buses appear as thick wires. You can extract individual
+signals from buses and use them as regular inputs [4], as shown in Figure 5.
+
+     Figure 5: Bus in Quartus, X[2..0], with individual signals used as regular inputs.
+                                                        24
+   Figure 6: Flip-flop alternate design utilizing bus connections for inputs and outputs.
+
+A.5 Using Wires
+
+In Quartus schematic entry (.bdf) files, you can use a wire primitive to assign multiple
+names to the same signal [4], as illustrated in Figure 7. A wire primitive looks like an
+inverter without the bubble.
+
+             Figure 7: Wire primitive assigning multiple names to a single signal.
+                                                        25
+A.6 Simplifying Simulation Analysis
+
+In the waveform editor, group related input or output signals together. Select multiple
+inputs, right-click, choose Grouping, and select Group.
+
+    Once grouped, the radix (base) of the group can be modified. Right-click the group,
+select Radix, and choose binary, hexadecimal, unsigned decimal, or octal. This allows you
+to input and read values as single numbers (e.g., A = 1011), which speeds up verification,
+as shown in Figure 8. When grouping signals, ensure that the bits are ordered from most
+significant bit (MSB) to least significant bit (LSB) [1].
+
+                 Figure 8: Grouped input signals utilizing a hexadecimal radix.
+    Note: If bus connections are used in the schematic, Quartus automatically groups these
+signals in the waveform editor.
+
+A.7 Quartus Software Glitches (Simulation or Compilation)
+
+Occasionally, Quartus workspace files can become corrupted. You might be experiencing
+this if:
+
+    · The simulation window opens and immediately closes without displaying any wave-
+       forms.
+
+    · The compilation process gets completely stuck, freezes, or runs unusually slowly.
+Solution: Create a brand new Quartus project in a new folder. Copy over only your
+essential source files (such as your .bdf, .bsf, .v, .vhd, and .vwf files) into the new
+project and recompile.
+
+                                                        26
+A.8 Hardware Connection Issues (USB-Blaster)
+
+When attempting to program the FPGA, the USB-Blaster might occasionally fail to appear
+in the list of available hardware. Try the following:
+
+   1. Close and reopen the Hardware Setup window in the Programmer.
+   2. Unplug and replug the USB cable connecting the board to the PC.
+   3. Power-cycle the DE2-115 board (turn the red power button off, wait a few seconds,
+
+       and turn it back on).
+Solution: If the USB-Blaster still fails to connect after trying all of the above steps, the
+specific test board, cable, or PC USB port may be faulty. In this case, try moving to
+another station and try again.
+
+A.9 Additional Resources
+
+Consult the provided course reference documents for detailed information on Altera De-
+sign workflows. The following resources may also be useful for supplementing the Virtual
+Campus material.
+
+    · Quartus Troubleshooting Guide (Colorado State University)
+    · Quartus Wire and Bus Connections (University of Florida)
+    · Quartus Bus Fundamentals (University of Florida)
+    · Memory Initialization File (MIF) Creation in Quartus (University of Florida)
+
+                                                        27
+B Appendix II: DE2-115 Board I/O Pin Assignments
+
+This appendix provides the FPGA pin assignments for the Altera DE2-115 board, including
+switches, LEDs, buttons, and 7-segment displays [2].
+
+B.1 Slide Switches and Push-buttons
+
+Table 12: Pin Assignments for Slide Switches
+
+Signal Name  FPGA Pin No.            Description
+SW[0]        PIN_AB28                Slide Switch [0]
+SW[1]        PIN_AC28                Slide Switch [1]
+SW[2]        PIN_AC27                Slide Switch [2]
+SW[3]        PIN_AD27                Slide Switch [3]
+SW[4]        PIN_AB27                Slide Switch [4]
+SW[5]        PIN_AC26                Slide Switch [5]
+SW[6]        PIN_AD26                Slide Switch [6]
+SW[7]        PIN_AB26                Slide Switch [7]
+SW[8]        PIN_AC25                Slide Switch [8]
+SW[9]        PIN_AB25                Slide Switch [9]
+SW[10]       PIN_AC24                Slide Switch [10]
+SW[11]       PIN_AB24                Slide Switch [11]
+SW[12]       PIN_AB23                Slide Switch [12]
+SW[13]       PIN_AA24                Slide Switch [13]
+SW[14]       PIN_AA23                Slide Switch [14]
+SW[15]       PIN_AA22                Slide Switch [15]
+SW[16]       PIN_Y24                 Slide Switch [16]
+SW[17]       PIN_Y23                 Slide Switch [17]
+
+             28
+Table 13: Pin Assignments for Push-button (Debounced) Switches
+
+Signal Name  FPGA Pin No.  Description
+KEY[0]       PIN_M23       Push-button [0]
+KEY[1]       PIN_M21       Push-button [1]
+KEY[2]       PIN_N21       Push-button [2]
+KEY[3]       PIN_R24       Push-button [3]
+
+             29
+B.2 LED Assignments
+
+Table 14: Pin Assignments for LEDs
+
+Signal Name          FPGA Pin No.  Description
+LEDR[0]              PIN_G19
+LEDR[1]              PIN_F19       LED  Red [0]
+LEDR[2]              PIN_E19       LED  Red [1]
+LEDR[3]              PIN_F21       LED  Red [2]
+LEDR[4]              PIN_F18       LED  Red [3]
+LEDR[5]              PIN_E18       LED  Red [4]
+LEDR[6]              PIN_J19       LED  Red [5]
+LEDR[7]              PIN_H19       LED  Red [6]
+LEDR[8]              PIN_J17       LED  Red [7]
+LEDR[9]              PIN_G17       LED  Red [8
+LEDR[10]             PIN_J15       LED  Red [9]
+LEDR[11]             PIN_H16       LED  Red [10]
+LEDR[12]             PIN_J16       LED  Red [11]
+LEDR[13]             PIN_H17       LED  Red [12]
+LEDR[14]             PIN_F15       LED  Red [13]
+LEDR[15]             PIN_G15       LED  Red [14]
+LEDR[16]             PIN_G16       LED  Red [15]
+LEDR[17]             PIN_H15       LED  Red [16]
+LEDG[0]              PIN_E21       LED  Red [17]
+LEDG[1]              PIN_E22       LED  Green [0]
+LEDG[2]              PIN_E25       LED  Green [1]
+LEDG[3]              PIN_E24       LED  Green [2]
+LEDG[4]              PIN_H21       LED  Green [3]
+LEDG[5]              PIN_G20       LED  Green [4]
+LEDG[6]              PIN_G22       LED  Green [5]
+LEDG[7]              PIN_G21       LED  Green [6]
+LEDG[8]              PIN_F17       LED  Green [7]
+                                   LED  Green [8]
+
+                     30
+B.3 Clock Inputs
+
+Table 15: Pin Assignments for Clock Inputs
+
+Signal Name       FPGA Pin No.  Description
+CLOCK_50          PIN_Y2        50 MHz clock input
+CLOCK2_50         PIN_AG14      50 MHz clock input
+CLOCK3_50         PIN_AG15      50 MHz clock input
+SMA_CLKOUT        PIN_AE23      External (SMA) clock output
+SMA_CLKIN         PIN_AH14      External (SMA) clock input
+
+                  31
+B.4 7-Segment Displays
+
+Table 16: Pin Assignments for 7-Segment Displays (HEX0 to HEX3)
+
+Signal Name  FPGA Pin No.   Description
+HEX0[0]      PIN_G18        Seven Segment Digit 0[0]
+HEX0[1]      PIN_F22        Seven Segment Digit 0[1]
+HEX0[2]      PIN_E17        Seven Segment Digit 0[2]
+HEX0[3]      PIN_L26        Seven Segment Digit 0[3]
+HEX0[4]      PIN_L25        Seven Segment Digit 0[4]
+HEX0[5]      PIN_J22        Seven Segment Digit 0[5]
+HEX0[6]      PIN_H22        Seven Segment Digit 0[6]
+HEX1[0]      PIN_M24        Seven Segment Digit 1[0]
+HEX1[1]      PIN_Y22        Seven Segment Digit 1[1]
+HEX1[2]      PIN_W21        Seven Segment Digit 1[2]
+HEX1[3]      PIN_W22        Seven Segment Digit 1[3]
+HEX1[4]      PIN_W25        Seven Segment Digit 1[4]
+HEX1[5]      PIN_U23        Seven Segment Digit 1[5]
+HEX1[6]      PIN_U24        Seven Segment Digit 1[6]
+HEX2[0]      PIN_AA25       Seven Segment Digit 2[0]
+HEX2[1]      PIN_AA26       Seven Segment Digit 2[1]
+HEX2[2]      PIN_Y25        Seven Segment Digit 2[2]
+HEX2[3]      PIN_W26        Seven Segment Digit 2[3]
+HEX2[4]      PIN_Y26        Seven Segment Digit 2[4]
+HEX2[5]      PIN_W27        Seven Segment Digit 2[5]
+HEX2[6]      PIN_W28        Seven Segment Digit 2[6]
+HEX3[0]      PIN_V21        Seven Segment Digit 3[0]
+HEX3[1]      PIN_U21        Seven Segment Digit 3[1]
+HEX3[2]      PIN_AB20       Seven Segment Digit 3[2]
+HEX3[3]      PIN_AA21       Seven Segment Digit 3[3]
+HEX3[4]      PIN_AD24       Seven Segment Digit 3[4]
+HEX3[5]      PIN_AF23       Seven Segment Digit 3[5]
+HEX3[6]      PIN_Y19        Seven Segment Digit 3[6]
+
+                        32
+Table 17: Pin Assignments for 7-Segment Displays (HEX4 to HEX7)
+
+Signal Name  FPGA Pin No.  Description
+HEX4[0]      PIN_AB19      Seven Segment Digit 4[0]
+HEX4[1]      PIN_AA19      Seven Segment Digit 4[1]
+HEX4[2]      PIN_AG21      Seven Segment Digit 4[2]
+HEX4[3]      PIN_AH21      Seven Segment Digit 4[3]
+HEX4[4]      PIN_AE19      Seven Segment Digit 4[4]
+HEX4[5]      PIN_AF19      Seven Segment Digit 4[5]
+HEX4[6]      PIN_AE18      Seven Segment Digit 4[6]
+HEX5[0]      PIN_AD18      Seven Segment Digit 5[0]
+HEX5[1]      PIN_AC18      Seven Segment Digit 5[1]
+HEX5[2]      PIN_AB18      Seven Segment Digit 5[2]
+HEX5[3]      PIN_AH19      Seven Segment Digit 5[3]
+HEX5[4]      PIN_AG19      Seven Segment Digit 5[4]
+HEX5[5]      PIN_AF18      Seven Segment Digit 5[5]
+HEX5[6]      PIN_AH18      Seven Segment Digit 5[6]
+HEX6[0]      PIN_AA17      Seven Segment Digit 6[0]
+HEX6[1]      PIN_AB16      Seven Segment Digit 6[1]
+HEX6[2]      PIN_AA16      Seven Segment Digit 6[2]
+HEX6[3]      PIN_AB17      Seven Segment Digit 6[3]
+HEX6[4]      PIN_AB15      Seven Segment Digit 6[4]
+HEX6[5]      PIN_AA15      Seven Segment Digit 6[5]
+HEX6[6]      PIN_AC17      Seven Segment Digit 6[6]
+HEX7[0]      PIN_AD17      Seven Segment Digit 7[0]
+HEX7[1]      PIN_AE17      Seven Segment Digit 7[1]
+HEX7[2]      PIN_AG17      Seven Segment Digit 7[2]
+HEX7[3]      PIN_AH17      Seven Segment Digit 7[3]
+HEX7[4]      PIN_AF17      Seven Segment Digit 7[4]
+HEX7[5]      PIN_AG18      Seven Segment Digit 7[5]
+HEX7[6]      PIN_AA14      Seven Segment Digit 7[6]
+
+             33
+References
+
+[1] Colorado State University. Quartus troubleshooting guide. https://www.engr.
+    colostate.edu/ECE102/Spring22/QUARTUS%20TROUBLESHOOTING%20GUIDE.pdf. Ac-
+    cessed: Feb. 2026.
+
+[2] Iowa State University. Pin assignment tables. https://home.engineering.iastate.
+    edu/~alexs/classes/2021_Fall_281/labs/Lab_03/DE2-115_PIN_ASSIGNMENTS.
+    pdf. Accessed: Feb. 2026.
+
+[3] M. Morris Mano. Computer System Architecture. Prentice Hall, 3rd edition, 1992.
+[4] University of Florida. Wire and bus connections in quartus. https://mil.ufl.edu/
+
+    3701/docs/quartus/wire_bus.pdf. Accessed: Feb. 2026.
+
+                                                        34
+
