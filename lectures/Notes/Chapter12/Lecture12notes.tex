@@ -1,0 +1,71 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amssymb}
+
+% Personal notes: \comment{Write your thoughts here.}
+% Notes appear in grey in the compiled document; blank lines are supported.
+\definecolor{commentgray}{gray}{0.5}
+\newcommand{\comment}[1]{{\color{commentgray}#1}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[C]{\textbf{CEG2136}}
+\fancyfoot[C]{\thepage}
+
+\newcounter{chapterNumber}
+\setcounter{chapterNumber}{12}
+\newcounter{headerOneCount}
+\newcounter{headerTwoCount}[headerOneCount]
+\setcounter{headerOneCount}{-1}
+\renewcommand{\theheaderOneCount}{\arabic{headerOneCount}}
+\renewcommand{\theheaderTwoCount}{\arabic{headerTwoCount}}
+
+\newcommand{\Title}[1]{%
+  \begin{center}
+    \fontsize{24}{28}\selectfont\textbf{#1}
+  \end{center}
+  \vspace{1em}
+}
+
+\newcommand{\HeaderOne}[1]{%
+  \refstepcounter{headerOneCount}%
+  \setcounter{headerTwoCount}{-1}%
+  \vspace{0.75em}
+  \noindent\fontsize{18}{22}\selectfont\textbf{\arabic{chapterNumber}.\theheaderOneCount\ #1}\par
+  \vspace{0.5em}
+}
+
+\newcommand{\HeaderTwo}[1]{%
+  \refstepcounter{headerTwoCount}%
+  \vspace{0.5em}
+  \noindent\fontsize{16}{20}\selectfont\textbf{\arabic{chapterNumber}.\theheaderOneCount.\theheaderTwoCount\ #1}\par
+  \vspace{0.4em}
+}
+
+\newcommand{\BodyText}[1]{%
+  \fontsize{12}{15}\selectfont #1\par
+}
+
+\newenvironment{NumberedList}{%
+  \begin{enumerate}[leftmargin=2em, itemsep=0.35em, topsep=0.35em]
+}{%
+  \end{enumerate}
+}
+
+\newenvironment{DottedList}{%
+  \begin{itemize}[leftmargin=2em, itemsep=0.35em, topsep=0.35em, label=\textbullet]
+}{%
+  \end{itemize}
+}
+
+\begin{document}
+
+\title{Input and Output}
+\textbf{How does a computer take input and read it as computer data? How does it output that data?}
+
+\end{document}
