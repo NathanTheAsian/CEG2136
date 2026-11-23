@@ -81,57 +81,73 @@
 \begin{itemize}
   \item \textbf{Starting point of command specific micro-ps for memory reference is at $T_4$. $T_0$ - $T_3$ is dedicated to fetch and decode.}
   \item \comment{Clarify with prof if its only memory reference and excludes cpu registers}
-  \item \textbf{RTL notation is a abstracted version of the actual operations for AND to AC}
+  \item \textbf{RTL notation is a abstracted version of the actual operations.}
 \end{itemize}
+
+\subsubsection{AND}
+
 \begin{itemize}
-  \item AND
-  \subitem Operation Decode: $D_0$
-  \subitem RTL Notation: AC $\leftarrow$ AC $\Join$ M[AR] 
+  \item Operation Decode: $D_0$
+  \item RTL Notation: AC $\leftarrow$ AC $\land$ M[AR] 
   \begin{itemize}
     \item AND to AC
     \item $D_0$$T_4$: DR $\leftarrow$ M[AR] Read operand 
-    \item $D_0$$T_5$: AC $\leftarrow$ AC $\Join$ DR, SC $\leftarrow$ 0 AND with AC, END program (SC $\leftarrow$ 0)
+    \item $D_0$$T_5$: AC $\leftarrow$ AC $\land$ DR, SC $\leftarrow$ 0 AND with AC, END program (SC $\leftarrow$ 0)
   \end{itemize}
-  
-  \item ADD
-  \subitem Operation Decode: $D_1$
-  \subitem RTL Notation: AC $\leftarrow$ AC $\Join$ M[AR], E $\leftarrow$ $C_out$
+\end{itemize}
+
+\subsubsection{ADD}
+\begin{itemize}
+  \item Operation Decode: $D_1$
+  \item RTL Notation: AC $\leftarrow$ AC $\land$ M[AR], E $\leftarrow$ $C_{out}$
   \begin{itemize}
     \item ADD to AC
     \item $D_1$$T_4$: DR $\leftarrow$ M[AR] Read operand 
-    \item $D_1$$T_5$: AC $\leftarrow$ AC + DR, SC $\leftarrow$ 0, E $\leftarrow$ $C_out$
+    \item $D_1$$T_5$: AC $\leftarrow$ AC + DR, SC $\leftarrow$ 0, E $\leftarrow$ $C_{out}$
     \begin{itemize}
       \item E is the extend one-bit that is dedicated specifically to AC 
       \item Can also be used for signed and unsigned arithmetic. This includes shifting. 
     \end{itemize}
   \end{itemize}
+\end{itemize}
+    
 
-  \item LDA
-  \subitem Operation Decode: $D_2$
-  \subitem RTL Notation: AC $\leftarrow$ AC $\Join$ M[AR], E $\leftarrow$ $C_out$
+\subsubsection{LDA}
+\begin{itemize}
+  \item Operation Decode: $D_2$
+  \item RTL Notation: AC $\leftarrow$ AC $\land$ M[AR], E $\leftarrow$ $C_{out}$
   \begin{itemize}
     \item Load to AC
     \item $D_2$$T_4$: DR $\leftarrow$ M[AR] Read operand 
     \item $D_2$$T_5$: AC $\leftarrow$ DR, SC $\leftarrow$ 0 Store/Load DR in AC
   \end{itemize}
+\end{itemize}
 
-  \item BUN
+\subsubsection{LDA}
+\begin{itemize}
+  \item Operation Decode: $D_4$$T_4$ 
+  \item RTL Notation: PC $\leftarrow$ AR, SC $\leftarrow$ 0 
+  \item Moves curent PC value (Program count) to AR, SC reset meaning move onto next program. 
   \begin{itemize}
     \item \textbf{RECALL that a program counter points to each sequential command}
     \item branching unconditionally is essentially just asking PC to skip existing logic and go directly to a "line of code" 
-    \item Move from AR to PC
-    \item \comment{How does AR correlate to the correct PC skip}
-    \item Immediate addressing AR to be value we want PC to skip to.  
-    \item \comment{Does the RTL not show the actual change to AR?}
-  \end{itemize}
+\end{itemize}
+  
 
+
+    \item \comment{How does AR correlate to the correct PC skip}
+    \item \textbf{Uses direct adressing (value at address) to set AR to be value we want PC to skip to.}
+    \item \comment{Does the RTL not show the actual change to AR?}
+    \item \textbf{No it doesnt.}
+  \end{itemize}
+  
   \item BSA
   \begin{itemize}
     \item Essentially, BUN with a way to return back to the original PC count.
     \item This is done by Storing the original PC count at AR, runs the subroutine at the new count. Once subroutine finishes call BUN back to the AR value (which contains the original count) 
   \end{itemize} 
   
-
+  
   \item ISZ
   \subitem Operation Decode: $D_6$
   \begin{itemize}
@@ -140,9 +156,9 @@
     \item $D_6$$T_5$ :DR $\leftarrow$ DR + 1 
     \item $D_6$$T_6$ :M[AR] $\leftarrow$ DR, if (DR = 0) then PC $\leftarrow$ PC + 1, SC $\leftarrow$ 0  
   \end{itemize}
-
-
+  
   
 \end{itemize}
+  
 
 \end{document}

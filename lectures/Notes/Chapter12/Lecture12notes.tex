@@ -65,7 +65,86 @@
 
 \begin{document}
 
-\title{Input and Output}
-\textbf{How does a computer take input and read it as computer data? How does it output that data?}
+\title{Input-Output Instructions}
+
+\section{Input-Output Instructions}
+\textbf{How does a computer take input and read it as computer data? How does it output that data?\newline}
+RECALL: fetch and decode is constant for all instructions, the rest happens after $T_3$
+
+SKI and SKO are covered in chapter 6\newline
+\begin{center}  
+  \begin{tabular}{l c r}
+    INP & $pB_11$: AC(0-7) $\leftarrow$ INPR, FGI $\leftarrow$ 0 & Input char to AC \\
+    OUT & $pB_10$: OUTR $\leftarrow$ AC(0-7), FGO $\leftarrow$ 0 & Output char to AC \\
+    SKI & $pB_9$: IF(FGI=1) then (PC $\leftarrow$ PC + 1) & Skip on input flag \\
+    SKO & $pB_8$: AC(0-7) $\leftarrow$ INPR, FGI $\leftarrow$ 0 & Input char to AC \\
+    ION & $pB_7$: IEN $\leftarrow$ 1 & Interrupt enable ON \\
+    ION & $pB_6$: IEN $\leftarrow$ 0 & Interrupt enable OFF \\
+  \end{tabular}
+\end{center}
+
+\textbf{We need a way for the computer to gracefully navigate between interrupt subroutine and regular program flow.}
+
+\section{Internal Async CPU Timing}
+\begin{itemize}
+  \item A program interrupt is when a computer pauses main routine and goes into a subroutine. 
+  \item Interrupts can occur at any time during an instruction cycle EXCEPT: Interrupts cant happen during fetch and decode.
+  \begin{itemize}
+    \item During fetch and decode the computer counter is vulnerable to any overrides.
+  \end{itemize}
+  \item The computer stores an \textbf{interrupt enable flip-flop (IEN)}. A state flip-flop that decides if a interrupt can occur.
+  \begin{itemize}
+    \item IOF : IEN $\leftarrow$ 0 (computer cannot be interrupted)
+    \item ION : IEN $\leftarrow$ 1 (computer can be interrupted)
+  \end{itemize}
+  \item Another flip-flip is used: \textbf{interrupt flip-flop (R)}. Used to decide when to go through the interrupt cycle.
+\end{itemize}
+
+\subsection{Interrupt Cycle}
+\begin{NumberedList}
+  \item Store return address in location: 0 M[0] $\leftarrow$ PC
+  \item BUN directly to the ISR address corresponding to the interrupt 
+  \item Disable Interrupts: IEN $\leftarrow$ 0, R $\leftarrow$ 0
+  \item Execute the interrupt service routine (ISR) 
+  \item Resume interrupted program with BUN indirectly back to address we left off.  
+\end{NumberedList}
+\subsubsection{Control Unit Application}
+\begin{itemize}
+  \item The CU sends \textbf{control signals} based on R and IEN.
+  \item If R is high, the CU sends the commands to enter Interrupt Cycle subroutine
+  \item If IEN is high, CU allows Interrupt Cycle subroutine.
+\end{itemize}
+
+\section{Design of Basic Computer}
+\begin{NumberedList}
+  \item Memory unit: 4096 x 16
+  \item Registers: AC, PC, DR, AC, IR, TR, OUTR, INPU, and SC
+  \item Flip-Flops (Status): I, S, E, R, IEN, FGI, and FGO
+  \item Decoders: 
+  \begin{NumberedList}
+    \item 3x8 Opcode decoder
+    \item 4x16 Timing Decoder
+  \end{NumberedList}
+  \item Common Bus: 16 bits
+  \item Control Logic Gates 
+  \item ALU: Connected to AC
+\end{NumberedList}
+\begin{itemize}
+  \item Control Logic Gates are used to control:
+  \begin{itemize}
+    \item Inputs of the registers
+    \item Read and write inputs of memory
+    \item Set, Clear and Complement inputs of the flip-flops
+    \item S2, S1, S0 that selects a register for the bus
+    \item AC Adder and Logic circuit
+  \end{itemize}
+\end{itemize}
+
+\subsection{Control of Registers and Memory}
+\begin{itemize}
+  \item Control inputs of the registers are LD, INR, and CLR
+  \item To control AR, we look for any interaction with AR and the disjunction (SoP) of all of them.
+\end{itemize}
+
 
 \end{document}

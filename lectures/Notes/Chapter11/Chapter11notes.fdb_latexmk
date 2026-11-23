@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1795012216.22032 "c:/Users/natha/CEG2136/lectures/Notes/Chapter11/Chapter11notes.tex" "Chapter11notes.pdf" "Chapter11notes" 1795012217.20269 0
+["pdflatex"] 1795016100.64942 "c:/Users/natha/CEG2136/lectures/Notes/Chapter11/Chapter11notes.tex" "Chapter11notes.pdf" "Chapter11notes" 1795016101.72081 0
   "11.1.png" 1795009472.88286 202335 2c5ad1bd2e83fcbab96e477bb240e61b ""
-  "C:/Users/natha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1794504243.0132 82048 3ae8cedc7758f91786132a4e3acacfe0 ""
+  "C:/Users/natha/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1795015387.86559 82048 3ae8cedc7758f91786132a4e3acacfe0 ""
   "C:/Users/natha/AppData/Local/MiKTeX/fonts/pk/ljfour/jknappen/ec/dpi600/tcrm1095.pk" 1764268737.36539 12668 5e362479a9bbfc26552acfb638c16803 ""
   "C:/Users/natha/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1761683678.28848 13321868 f61334fa4023a102eae55f538d4eecdf ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1095.tfm" 993062508 1460 8005ce585ff351dff78998923504da5e ""
@@ -31,7 +31,6 @@
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1247596667 35752 024fb6c41858982481f6968b5fc26508 ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb" 1247596667 32726 0a1aea6fcd6468ee2cf64d891f5c43c8 ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1247596667 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "C:/Users/natha/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb" 1247596673 34694 ad62b13721ee8eda1dcc8993c8bd7041 ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/tex/generic/iftex/iftex.sty" 1734114575 7984 7dbb9280f03c0a315425f1b4f35d43ee ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/tex/generic/iftex/ifvtex.sty" 1734114575 1057 525c2192b5febbd8c1f662c9468335bb ""
@@ -62,8 +61,8 @@
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/tex/latex/l3backend/l3backend-pdftex.def" 1761202581 30662 bfd6e864f4ffc5018b0e2b6260c3181c ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/tex/latex/parskip/parskip.sty" 1615976160 4288 94714aa7f535440f33181fec52a31963 ""
   "C:/Users/natha/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "Chapter11notes.aux" 1795012217.01667 154 8520ebf60993c3086b1c750a906c4fba "pdflatex"
-  "c:/Users/natha/CEG2136/lectures/Notes/Chapter11/Chapter11notes.tex" 1795012212.20025 4995 e4356bd71d141f4b8adda8edace39b32 ""
+  "Chapter11notes.aux" 1795016101.42565 356 649dfc24a5263495aa457c9ff40c6b7a "pdflatex"
+  "c:/Users/natha/CEG2136/lectures/Notes/Chapter11/Chapter11notes.tex" 1795016098.49912 5366 ba0cab6983e0e887fe1d14db5ed6b093 ""
   (generated)
   "Chapter11notes.aux"
   "Chapter11notes.log"
